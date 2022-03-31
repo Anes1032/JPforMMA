@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# デフォルトユーザーの追加
+
+user = User.new(:email => 'moriwaki0302@gmail.com', :password => 'sena0302', :admin => true)
+user.save!
