@@ -3,7 +3,7 @@ services:
   rails:
     build: .
     container_name: rails
-    command: bundle exec puma -C config/puma.rb -e production
+    command: bundle exec puma -C config/puma.rb -e production -d
     volumes:
       - .:/app
       - public-data:/app/public
@@ -31,6 +31,7 @@ services:
   web:
     build:
       context: nginx
+    container_name: web
     volumes:
       - public-data:/app/public
       - tmp-data:/app/tmp
