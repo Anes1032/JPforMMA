@@ -15,17 +15,17 @@ services:
     depends_on:
       - db
 
-  db:
-    image: mysql:8.0
-    container_name: db
-    environment:
-      TZ: Asia/Tokyo
-      # MYSQL_ROOT_PASSWORD: password
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-    ports:
-      - "3306:3306"
-    volumes:
-      - ./db/mysql_data:/var/lib/mysql
+  # db:
+  #   image: mysql:8.0
+  #   container_name: db
+  #   environment:
+  #     TZ: Asia/Tokyo
+  #     # MYSQL_ROOT_PASSWORD: password
+  #     MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+  #   ports:
+  #     - "3306:3306"
+  #   volumes:
+  #     - ./db/mysql_data:/var/lib/mysql
   
   web:
     build:
@@ -39,8 +39,8 @@ services:
       - rails
 
 volumes:
-  db:
-    driver: local
+  # db:
+  #   driver: local
   public-data:
   tmp-data:
   log-data:
