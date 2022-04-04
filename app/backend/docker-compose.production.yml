@@ -12,8 +12,9 @@ services:
       - /app/node_modules
     env_file:
       - .env
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
+    user: root
 
   # db:
   #   image: mysql:8.0
