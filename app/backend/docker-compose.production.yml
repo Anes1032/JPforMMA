@@ -27,8 +27,8 @@ services:
       - 80:80
     depends_on:
       - rails
-    environment:
-      - SERVER_IP=${SERVER_IP:-localhost}
+    # environment:
+    #   - SERVER_IP=${SERVER_IP:-localhost}
 
 volumes:
   public-data:
