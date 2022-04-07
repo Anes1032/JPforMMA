@@ -1,0 +1,19 @@
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.4.0
+
+jobs:
+  build:
+    docker:
+      - image: cimg/ruby:2.7
+    working_directory: ~/JPforMMA/app/backend
+    steps:
+      - checkout:
+          path: ~/JPforMMA
+      - ruby/install-deps
+
+workflows:
+  backend:
+    jobs:
+      - build
