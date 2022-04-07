@@ -4,7 +4,7 @@ orbs:
   ruby: circleci/ruby@1.4.0
 
 jobs:
-  build:
+  backend_build:
     docker:
       - image: cimg/ruby:2.7
     working_directory: ~/JPforMMA/app/backend
@@ -14,6 +14,6 @@ jobs:
       - ruby/install-deps
 
 workflows:
-  backend:
+  test:
     jobs:
-      - build
+      - backend_build
