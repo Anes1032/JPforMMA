@@ -77,8 +77,8 @@ def get_posts() :
       ja_sub_title = translate(en_sub_title)
       created_by = getText(soup.select_one('.c-byline__author-name'))
       created_by_address = getHref(soup.select_one('.c-byline__twitter-handle'))
-      image_url = getSrc(soup.select_one('.e-image--hero img'))
-      video_url = getSrc(soup.select_one('.c-video-embed--media iframe'))
+      image_url = getSrc(soup.select_one('.e-image__image img'))
+      video_url = getSrc(soup.select_one('.l-col__main:first-child iframe'))
       post_time = getTime(soup.select_one('time'))
       en_content = soup.select_one('.c-entry-content')
 
@@ -107,7 +107,7 @@ def get_posts() :
       ja_content = ''.join([translate(text=str(el).replace('\n', '')) for el in en_content.find_all(['p', 'h3'])])
 
       # 上記によってahrefとなってしまったのでa hrefに戻す
-      ja_content = ja_content.replace('ahref', 'a href')
+      ja_content = ja_content.replace('ahref', 'a href').replace('Ahref', 'a href')
 
       # 改行の削除/wrapしてるdiv要素の削除
       en_content = ''.join([str(el).replace('\n', '') for el in en_content.find_all(['p', 'h3'])])
