@@ -20,18 +20,25 @@ ActiveRecord::Schema.define(version: 2022_03_27_135328) do
   end
 
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "title"
+    t.text "en_title"
+    t.text "ja_title"
+    t.text "en_sub_title"
+    t.text "ja_sub_title"
     t.text "en_content"
     t.text "ja_content"
     t.string "image_url"
-    t.text "created_by"
+    t.string "video_url"
+    t.string "created_by"
+    t.string "created_by_address"
+    t.string "post_time"
     t.string "reference_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.integer "category_id"
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -39,7 +46,6 @@ ActiveRecord::Schema.define(version: 2022_03_27_135328) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
     t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
