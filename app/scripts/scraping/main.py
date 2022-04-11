@@ -65,20 +65,23 @@ def get_posts() :
     url = "https://www.mmamania.com/latest-news/archives/" + str(pageNumber)
     res = requests.get(url)
     soup = BeautifulSoup(res.text, "html.parser")
-    doms = soup.select('.c-entry-box--compact__image-wrapper')
+    doms = soup.select('.c-compact-river__entry')
     links = [dom.get('href') for dom in doms]
     for link in links :
       time.sleep(3.0)
       res = requests.get(link)
       soup = BeautifulSoup(res.text, "html.parser")
+      head_info = soup.find('head')
       en_title = getText(soup.select_one('.c-page-title'))
       ja_title = translate(en_title)
-      en_sub_title = getText(soup.select_one('.c-entry-summary'))
+      meta_description = head_info.find('meta', {'name' : 'description'})
+      en_sub_title = meta_description['content']
       ja_sub_title = translate(en_sub_title)
       created_by = getText(soup.select_one('.c-byline__author-name'))
       created_by_address = getHref(soup.select_one('.c-byline__twitter-handle'))
-      image_url = getSrc(soup.select_one('.e-image__image img'))
-      video_url = getSrc(soup.select_one('.l-col__main:first-child iframe'))
+      og_image = head_info.find('meta', {'property' : 'og:image'})
+      image_url = og_image['content']
+      video_url = getSrc(soup.select_one('.c-video-embed--media iframe'))
       post_time = getTime(soup.select_one('time'))
       en_content = soup.select_one('.c-entry-content')
 
