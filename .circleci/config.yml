@@ -6,7 +6,7 @@ orbs:
 jobs:
   backend_build:
     docker:
-      - image: cimg/ruby:2.7
+      - image: cimg/ruby:2.7.2
     working_directory: ~/JPforMMA/app/backend
     steps:
       - checkout:
@@ -14,7 +14,7 @@ jobs:
       - ruby/install-deps
   backend_deploy:
     docker:
-      - image: circleci/ruby:2.7
+      - image: circleci/ruby:2.7.2
     steps:
       - checkout
       - add_ssh_keys:
