@@ -5,6 +5,11 @@ class PostsController < ApplicationController
     render json: { status: 'SUCCESS', message: 'Loaded posts', data: posts }
   end
 
+  def top
+    posts = Post.order(created_at: :desc).limit(3)
+    render json: { status: 'SUCCESS', message: 'Loaded posts', data: posts }
+  end
+
   def show
     render json: { status: 'SUCCESS', message: 'Loaded the post', data: @post }
   end

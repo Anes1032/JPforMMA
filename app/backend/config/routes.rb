@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   get 'posts', to: 'posts#index'
+  get 'posts/top', to: 'posts#top'
   post 'posts', to: 'posts#create'
   get 'posts/:id', to: 'posts#show'
-  patch 'posts/:id', to: 'posts#destroy'
-  put 'posts/:id', to: 'posts#destroy'
+  patch 'posts/:id', to: 'posts#update'
+  put 'posts/:id', to: 'posts#update'
   delete 'posts/:id', to: 'posts#destroy'
 
   get '/' => redirect('/admin')

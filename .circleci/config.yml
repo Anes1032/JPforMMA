@@ -6,14 +6,40 @@ orbs:
 jobs:
   backend_build:
     docker:
-      - image: cimg/ruby:2.7
+      - image: cimg/ruby:2.7.2
     working_directory: ~/JPforMMA/app/backend
     steps:
       - checkout:
           path: ~/JPforMMA
       - ruby/install-deps
+  backend_deploy:
+    docker:
+      - image: circleci/ruby:2.7.2
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "15:2e:1e:79:79:4c:df:27:d4:26:4d:19:2d:4d:2d:f2"
+      - run: 
+          name: ssh login
+          command: ssh -p ${USER_NAME}@${HOST_NAME}
+      - run:
+          name: cd & git pull
+          command: cd JPforMMA/app/backend && git pull origin master
+      - run:
+          name: build
+          command: sudo docker-compose -f docker-compose.production.yml build 
+      - run:
+          name: migrate
+          command: sudo docker-compose -f docker-compose.production.yml rails rails --rm db:migrate RAILS_ENV=production
 
 workflows:
-  test:
+  build_and_deploy:
     jobs:
       - backend_build
+      - backend_deploy:
+          requires:
+            - backend_build
+          filters:
+            branches:
+              only: master
