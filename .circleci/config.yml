@@ -22,19 +22,16 @@ jobs:
             - "19:36:45:71:aa:24:96:47:c9:c1:97:da:73:94:28:f8"
       - run: 
           name: ssh login
-          command: ssh ${USER_NAME}@${HOST_NAME} "cd JPforMMA"
-      - run: 
-          name: テスト
-          command: pwd ls
-      # - run:
-      #     name: cd & git pull
-      #     command: cd JPforMMA/app/backend && git pull origin master && pwd && ls
-      # - run:
-      #     name: build
-      #     command: sudo docker-compose -f docker-compose.production.yml build 
-      # - run:
-      #     name: migrate
-      #     command: sudo docker-compose -f docker-compose.production.yml rails rails --rm db:migrate RAILS_ENV=production
+          command: ssh ${USER_NAME}@${HOST_NAME} ""
+      - run:
+          name: cd & git pull
+          command: cd JPforMMA/app/backend && git pull origin master && pwd && ls
+      - run:
+          name: build
+          command: sudo docker-compose -f docker-compose.production.yml build 
+      - run:
+          name: migrate
+          command: sudo docker-compose -f docker-compose.production.yml rails rails --rm db:migrate RAILS_ENV=production
 
 workflows:
   build_and_deploy:
