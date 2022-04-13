@@ -129,7 +129,7 @@ GEM
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.15.0)
+    loofah (2.16.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -144,7 +144,7 @@ GEM
     mysql2 (0.5.3)
     nested_form (0.3.2)
     nio4r (2.5.8)
-    nokogiri (1.13.3)
+    nokogiri (1.13.4)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -218,7 +218,7 @@ GEM
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.4.0)
+    sassc (2.1.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
@@ -291,7 +291,8 @@ DEPENDENCIES
   rails (~> 6.1.5)
   rails_admin (~> 2.0.0.beta)
   rails_admin_import (~> 2.1)
-  sass-rails (>= 6)
+  sass-rails (= 6)
+  sassc (= 2.1.0)
   selenium-webdriver (>= 4.0.0.rc1)
   spring
   turbolinks (~> 5)
@@ -301,7 +302,7 @@ DEPENDENCIES
   webpacker (~> 5.0)
 
 RUBY VERSION
-   ruby 2.7.5p203
+   ruby 2.7.2p137
 
 BUNDLED WITH
    2.1.4
