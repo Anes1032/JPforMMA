@@ -1,6 +1,12 @@
+import Layout from "~/components/common/Layout";
+
 const Index = (data) => {
   console.log(data.data);
-  return <div>Hello World!!</div>;
+  return (
+    <Layout>
+      <div>Hello World!!</div>
+    </Layout>
+  );
 };
 
 export const getServerSideProps = async () => {
