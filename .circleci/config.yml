@@ -19,7 +19,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "15:2e:1e:79:79:4c:df:27:d4:26:4d:19:2d:4d:2d:f2"
+            - "67:56:00:5c:99:75:07:42:79:6c:e3:32:9d:1b:7b:cf"
       - run: 
           name: ssh login
           command: ssh -o StrictHostKeyChecking=no ${USER_NAME}@${HOST_NAME}
