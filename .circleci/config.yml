@@ -25,13 +25,13 @@ jobs:
           command: ssh -o StrictHostKeyChecking=no ec2-user@54.199.6.209 'cd'
       - run:
           name: cd & git pull
-          command: cd app/backend && git pull origin master
-      - run:
-          name: build
-          command: sudo docker-compose -f docker-compose.production.yml build 
-      - run:
-          name: migrate
-          command: sudo docker-compose -f docker-compose.production.yml rails rails --rm db:migrate RAILS_ENV=production
+          command: cd app/backend && git pull origin master && pwd && ls
+      # - run:
+      #     name: build
+      #     command: sudo docker-compose -f docker-compose.production.yml build 
+      # - run:
+      #     name: migrate
+      #     command: sudo docker-compose -f docker-compose.production.yml rails rails --rm db:migrate RAILS_ENV=production
 
 workflows:
   build_and_deploy:
