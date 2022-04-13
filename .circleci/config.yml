@@ -15,6 +15,7 @@ jobs:
   backend_deploy:
     docker:
       - image: circleci/ruby:2.7.2
+    working_directory: ~/JPforMMA/app/backend
     steps:
       - checkout
       - add_ssh_keys:
@@ -24,8 +25,13 @@ jobs:
           name: ssh login
           command: ssh -o StrictHostKeyChecking=no ${USER_NAME}@${HOST_NAME} 'cd'
       - run:
-          name: cd & git pull
-          command: cd app/backend && git pull origin master
+          name: 実験
+          command: |
+            pwd
+            ls
+      - run:
+          name: git pull
+          command: git pull origin master
       - run:
           name: build
           command: sudo docker-compose -f docker-compose.production.yml build 
