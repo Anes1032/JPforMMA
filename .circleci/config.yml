@@ -25,7 +25,7 @@ jobs:
           command: ssh -o StrictHostKeyChecking=no ${USER_NAME}@${HOST_NAME} 'cd'
       - run:
           name: cd & git pull
-          command: cd JPforMMA/app/backend && git pull origin master
+          command: cd app/backend && git pull origin master
       - run:
           name: build
           command: sudo docker-compose -f docker-compose.production.yml build 
