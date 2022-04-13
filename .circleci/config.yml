@@ -27,9 +27,6 @@ jobs:
           name: git pull
           command: git pull origin master
       - run:
-          name: git log --oneline
-          command: git log --oneline
-      - run:
           name: ls
           command: ls
       # - run:
