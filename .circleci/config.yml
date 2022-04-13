@@ -37,7 +37,7 @@ workflows:
   build_and_deploy:
     jobs:
       - backend_build
-      - deploy:
+      - backend_deploy:
           requires:
             - backend_build
           filters:
