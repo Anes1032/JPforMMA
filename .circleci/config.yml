@@ -26,6 +26,7 @@ jobs:
       - run: 
           name: テスト
           command: |
+            cd app
             pwd 
             ls
       # - run:
