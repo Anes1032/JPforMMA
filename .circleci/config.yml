@@ -22,7 +22,7 @@ jobs:
             - "15:2e:1e:79:79:4c:df:27:d4:26:4d:19:2d:4d:2d:f2"
       - run: 
           name: ssh login
-          command: ssh ${USER_NAME}@${HOST_NAME}
+          command: ssh -o StrictHostKeyChecking=no ${USER_NAME}@${HOST_NAME}
       - run:
           name: cd & git pull
           command: cd JPforMMA/app/backend && git pull origin master
