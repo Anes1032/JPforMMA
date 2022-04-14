@@ -1,0 +1,31 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+
+.main {
+  background-color: $white;
+}
+
+.inner {
+  width: $content-max-width;
+  margin: 0 auto;
+  padding: 67px 0;
+}
+
+.image {
+  width: 229px;
+  height: 216px;
+}
+
+.bottom {
+  background-color: #0f0f0f;
+  padding: 15px 0;
+}
+
+.copyright {
+  width: $content-max-width;
+  margin: 0 auto;
+  text-align: center;
+  letter-spacing: 0.3px;
+  font-size: 14px;
+  color: $white;
+}

@@ -1,0 +1,26 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+
+@mixin h2_title() {
+  text-align: left;
+
+  .text {
+    position: inline-block;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #f70d0d;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: calc(100% + 10px);
+      width: calc($main-box-width - 100% - 10px);
+      height: 5px;
+      background-color: #e4e4e4;
+    }
+  }
+}
