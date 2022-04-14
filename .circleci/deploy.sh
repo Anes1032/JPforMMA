@@ -6,4 +6,4 @@ git pull origin master
 
 sudo docker-compose -f docker-compose.production.yml build
 
-sudo docker-compose -f docker-compose.production.yml rails rails --rm db:migrate RAILS_ENV=production
+sudo docker-compose -f docker-compose.production.yml run --rm rails rails db:migrate  RAILS_ENV=production
