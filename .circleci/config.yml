@@ -21,7 +21,7 @@ jobs:
           fingerprints:
             - "19:36:45:71:aa:24:96:47:c9:c1:97:da:73:94:28:f8"
       - run: 
-          name: ssh login
+          name: deploy
           command: ssh ${USER_NAME}@${HOST_NAME} "bash ~/JPforMMA/.circleci/deploy.sh"
 
 workflows:
