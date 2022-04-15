@@ -16,6 +16,12 @@ Rails.application.routes.draw do
   put 'posts/:id', to: 'posts#update'
   delete 'posts/:id', to: 'posts#destroy'
 
+  get 'tags', to: 'tags#index'
+  get 'tags/:id', to: 'tags#show'
+
+  get 'fighters', to: 'fighters#index'
+  get 'fighters/:id', to: 'fighters#show'
+
   get '/' => redirect('/admin')
 
   get 'test', to: 'test#index'

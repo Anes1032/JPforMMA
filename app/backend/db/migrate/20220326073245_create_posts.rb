@@ -13,6 +13,9 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :created_by_address
       t.string :post_time
       t.string :reference_url
+      t.boolean :hero
+      t.boolean :pickup
+      t.boolean :recommend
 
       t.datetime :created_at, default: -> { 'CURRENT_TIMESTAMP' }
       t.datetime :updated_at, default: -> { 'CURRENT_TIMESTAMP' }

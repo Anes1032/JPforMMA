@@ -1,17 +1,41 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :update, :destroy]
+  skip_before_action :verify_authenticity_token
+
   def index
-    posts = Post.order(created_at: :desc)
+    if params[:page]
+      posts = Post.order(post_time: :desc).joins(:category).select("posts.*", "categories.*").page(params[:page]).per(10)
+    else 
+      posts = Post.joins(:category).select("posts.*", "categories.*").order(post_time: :desc)
+    end
     render json: { status: 'SUCCESS', message: 'Loaded posts', data: posts }
   end
 
   def top
-    posts = Post.order(created_at: :desc).limit(3)
-    render json: { status: 'SUCCESS', message: 'Loaded posts', data: posts }
+    hero = Post.where(hero: true).order(post_time: :desc)
+    recommend = Post.where(recommend: true).order(post_time: :desc).limit(3)
+    pickup = Post.where(pickup: true).order(post_time: :desc).limit(3)
+    news = Post.order(post_time: :desc).limit(3)
+    tags = Tag.all
+    fighters = Fighter.all
+    data = {
+      hero: hero,
+      recommend: recommend,
+      pickup: pickup,
+      news: news,
+      tags: tags,
+      fighters: fighters
+    }
+    render json: { status: 'SUCCESS', message: 'Loaded posts', data: data }
   end
 
   def show
-    render json: { status: 'SUCCESS', message: 'Loaded the post', data: @post }
+    tags = TagRelationship.joins(:tag).select("tags.id", "tags.name").where(post_id: params[:id])
+    data = {
+      post: @post,
+      tags: tags
+    }
+    render json: { status: 'SUCCESS', message: 'Loaded the post', data: data }
   end
 
   def create
@@ -43,6 +67,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title)
+    params.require(:post).permit(:en_title)
   end
 end

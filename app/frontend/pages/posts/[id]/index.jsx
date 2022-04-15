@@ -23,14 +23,19 @@ const Index = (data) => {
       <div className={style.content}>
         <Breadcrumbs data={breadcrumbs} />
         <div className={style.box}>
-          <Article data={post} />
+          <Article data={post.post} />
           <div className={style.sidebar}>
             <Ranking />
             <BackLinks />
-            <Tags name={"関連するキーワード"} />
+            <Tags 
+              name={"関連するキーワード"} 
+              data={post.tags}
+              slug={"tags"}
+            />
           </div>
         </div>
       </div>
+      <p></p>
     </Layout>
   );
 };

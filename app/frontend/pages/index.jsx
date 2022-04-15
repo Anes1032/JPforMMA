@@ -9,31 +9,41 @@ import style from "~/pages/index.module.scss"
 
 const Index = (data) => {
   const posts = data.data
+  console.log(posts)
   return (
     <Layout>
       <Hero 
-        data={posts}
+        data={posts.hero}
       />
       <div className={style.content}>
         <div className={style.box} >
           <New 
-            data={posts}
+            data={posts.news}
           />
           <Ranking />
         </div>
         <Pickup 
-          data={posts}
+          data={posts.pickup}
         />
         <div className={style.box} >
           <Recommend
-            data={posts}
+            data={posts.recommend}
           />
           <div>
-            <Tags name={"急上昇ワード"} />
-            <Tags name={"人気UFCファイター"} />
+            <Tags 
+              name={"急上昇ワード"} 
+              data={posts.tags}
+              slug={"tags"}
+            />
+            <Tags 
+              name={"人気UFCファイター"} 
+              data={posts.fighters}
+              slug={"fighters"}
+            />
           </div>
         </div>
       </div>
+      <p></p>
     </Layout>
   );
 };

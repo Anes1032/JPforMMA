@@ -64,7 +64,7 @@ def get_posts() :
     url = "https://www.mmamania.com/latest-news/archives/" + str(pageNumber)
     res = requests.get(url)
     soup = BeautifulSoup(res.text, "html.parser")
-    doms = soup.select('.c-compact-river__entry')
+    doms = soup.select('.c-entry-box--compact__image-wrapper')
     links = [dom.get('href') for dom in doms]
     for link in links :
       time.sleep(3.0)
@@ -136,13 +136,13 @@ def insert_db(array) :
   # SQL文を実行
   sql = ('''
   INSERT INTO posts 
-    (en_title, ja_title, en_sub_title, ja_sub_title, en_content, ja_content, image_url, video_url, created_by, created_by_address, reference_url, post_time, category_id) 
+    (en_title, ja_title, en_sub_title, ja_sub_title, en_content, ja_content, image_url, video_url, created_by, created_by_address, reference_url, post_time) 
   VALUES 
-    (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
   ''')
 
   for el in array :
-    cur.execute(sql , (el[0], el[1], el[2], el[3], el[4], el[5], el[6], el[7], el[8], el[9], el[10],el[11], 1))
+    cur.execute(sql , (el[0], el[1], el[2], el[3], el[4], el[5], el[6], el[7], el[8], el[9], el[10],el[11]))
 
   conn.commit()
   

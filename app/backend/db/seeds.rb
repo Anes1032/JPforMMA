@@ -7,9 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # デフォルトユーザーの追加
-user = User.new(:email => 'moriwaki0302@gmail.com', :password => 'sena0302', :admin => true)
-user.save!
+User.create!(:email => 'moriwaki0302@gmail.com', :password => 'sena0302', :admin => true)
 
 # デフォルトカテゴリーの追加
-category = Category.new(:name => 'UFC', :slug => 'ufc')
-category.save!
+Category.create!(:name => 'UFC')
+
+# デフォルトのステータスの追加
+Status.create!(:name=> '公開')
+Status.create!(:name=> '非公開')
