@@ -1,10 +1,10 @@
 import Layout from "~/components/common/Layout";
 import Hero from "~/components/pages/index/Hero";
 import New from "~/components/pages/index/New";
-import Ranking from "~/components/pages/index/Ranking";
+import Ranking from "~/components/pages/common/Ranking";
 import Pickup from "~/components/pages/index/Pickup";
 import Recommend from "~/components/pages/index/Recommend";
-import Tags from "~/components/pages/index/common/Tags";
+import Tags from "~/components/pages/common/Tags";
 import style from "~/pages/index.module.scss"
 
 const Index = (data) => {

@@ -1,4 +1,4 @@
-import style from "~/components/pages/index/common/Tags/index.module.scss"
+import style from "~/components/pages/common/Tags/index.module.scss"
 
 const Tags = ({
   name,

@@ -1,4 +1,4 @@
-import style from "~/components/pages/index/Ranking/index.module.scss"
+import style from "~/components/pages/common/Ranking/index.module.scss"
 
 const Ranking = () => {
   return (

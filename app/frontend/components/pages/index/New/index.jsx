@@ -6,7 +6,7 @@ const New = (data) => {
   return (
     <div className={style.container} >
       <h2 className={style.title}>
-        <span className={style.text}>新着</span>
+        <span className={style.text}>News</span>
       </h2>
       <div className={style.readmore}>
         <Link href={"/"}>
