@@ -25,7 +25,7 @@ jobs:
           command: ssh ${USER_NAME}@${HOST_NAME} "bash ~/JPforMMA/.circleci/deploy-backend.sh"
   frontend_build:
     docker:
-      - image: circleci/node:8.9
+      - image: cimg/node:14.15.0
     working_directory: ~/JPforMMA/app/frontend
     steps:
       - checkout:
