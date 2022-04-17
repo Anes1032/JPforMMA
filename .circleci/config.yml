@@ -22,7 +22,7 @@ jobs:
             - "19:36:45:71:aa:24:96:47:c9:c1:97:da:73:94:28:f8"
       - run: 
           name: deploy
-          command: ssh ${USER_NAME_BACKEND}@${HOST_NAME} "bash ~/JPforMMA/.circleci/deploy-backend.sh"
+          command: ssh ${USER_NAME}@${HOST_NAME_BACKEND} "bash ~/JPforMMA/.circleci/deploy-backend.sh"
   frontend_build:
     docker:
       - image: cimg/node:14.15.0
@@ -49,7 +49,7 @@ jobs:
             - "19:36:45:71:aa:24:96:47:c9:c1:97:da:73:94:28:f8"
       - run: 
           name: deploy
-          command: ssh ${USER_NAME_FRONTEND}@${HOST_NAME} "bash ~/JPforMMA/.circleci/deploy-backend.sh"
+          command: ssh ${USER_NAME}@${HOST_NAME_FRONTEND} "bash ~/JPforMMA/.circleci/deploy-backend.sh"
 
 workflows:
   build_and_deploy:
