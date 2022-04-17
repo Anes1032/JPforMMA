@@ -26,9 +26,9 @@ jobs:
   frontend_build:
     docker:
       - image: circleci/node:8.9
-    working_directory: ~/JPforMMA/app/frontend
     steps:
       - checkout
+      - run: cd ~/JPforMMA/app/frontend
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
