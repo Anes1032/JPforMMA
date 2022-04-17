@@ -7,19 +7,19 @@
 }
 
 .title {
-  @include h2_title
+  @include title_style;
 }
 
 .content {
   margin-top: 25px;
   background-color: $white;
-  box-shadow: 5px 10px 10px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: 5px 10px 10px 0 $shadow;
   padding: 30px;
 }
 
 .item {
   display: flex;
-  &:nth-child(n+2) {
+  &:nth-child(n + 2) {
     padding-top: 15px;
     margin-top: 15px;
     border-top: 2px solid #e4e4e4;
@@ -60,7 +60,7 @@
     .time {
       display: flex;
       align-items: center;
-  
+
       img {
         width: 16px;
         height: 16px;

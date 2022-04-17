@@ -13,7 +13,7 @@
 .item {
   position: relative;
   display: block;
-  
+
   .title {
     position: absolute;
     bottom: 70px;
@@ -23,18 +23,18 @@
     font-size: 54px;
     font-weight: bold;
   }
-  
+
   .infos {
     position: absolute;
     bottom: 25px;
     right: 100px;
     color: $white;
     font-size: 18px;
-  
+
     .time {
       display: flex;
       align-items: center;
-  
+
       img {
         width: 16px;
         height: 16px;
@@ -43,4 +43,3 @@
     }
   }
 }
-

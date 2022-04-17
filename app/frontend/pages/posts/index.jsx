@@ -1,25 +1,29 @@
 import Layout from "~/components/common/Layout";
-import Hero from "~/components/pages/index/Hero";
-import New from "~/components/pages/index/New";
+import Breadcrumbs from "~/components/common/Breadcrumbs";
 import Ranking from "~/components/pages/common/Ranking";
-import Pickup from "~/components/pages/index/Pickup";
-import Recommend from "~/components/pages/index/Recommend";
 import Tags from "~/components/pages/common/Tags";
-import style from "~/pages/index.module.scss";
+import Posts from "~/components/pages/posts/archive/Posts";
+import style from "~/pages/posts/index.module.scss";
 
 const Index = ({ data }) => {
+  const breadcrumbs = [
+    {
+      url: "/posts/",
+      name: "記事一覧",
+    },
+  ];
   return (
     <Layout>
-      <Hero data={data.hero} />
       <div className={style.content}>
+        <Breadcrumbs data={breadcrumbs} />
         <div className={style.box}>
-          <New data={data.news} />
-          <Ranking />
-        </div>
-        <Pickup data={data.pickup} />
-        <div className={style.box}>
-          <Recommend data={data.recommend} />
-          <div>
+          <Posts
+            data={data.posts}
+            pagenations={data.pagenations}
+            name={"記事一覧"}
+          />
+          <div className={style.sidebar}>
+            <Ranking />
             <Tags name={"急上昇ワード"} data={data.tags} slug={"tags"} />
             <Tags
               name={"人気UFCファイター"}
@@ -33,8 +37,9 @@ const Index = ({ data }) => {
   );
 };
 
-export const getServerSideProps = async () => {
-  const requestUrl = `${process.env.NEXT_PUBLIC_API_URL}/posts/top`;
+export const getServerSideProps = async ({ query }) => {
+  const page = query.page ? query.page : 1;
+  const requestUrl = `${process.env.NEXT_PUBLIC_API_URL}/posts/?page=${page}`;
   const res = await fetch(requestUrl);
   const data = await res.json();
 

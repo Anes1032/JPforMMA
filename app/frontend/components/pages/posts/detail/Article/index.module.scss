@@ -3,7 +3,7 @@
 
 .container {
   width: $main-box-width;
-  box-shadow: 5px 10px 10px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: 5px 10px 10px 0 $shadow;
   background-color: $white;
   padding: 30px 30px 50px;
 }
@@ -20,7 +20,7 @@
       height: 44px;
       display: block;
 
-      &:nth-child(n+2) {
+      &:nth-child(n + 2) {
         margin-left: 15px;
       }
     }
@@ -60,7 +60,7 @@
     .time {
       display: flex;
       align-items: center;
-  
+
       img {
         width: 16px;
         height: 16px;

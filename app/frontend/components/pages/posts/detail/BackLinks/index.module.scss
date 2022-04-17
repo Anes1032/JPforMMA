@@ -9,7 +9,7 @@ a.top {
   display: block;
   text-align: center;
   border-radius: 4px;
-  box-shadow: 5px 10px 10px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: 5px 10px 10px 0 $shadow;
   background-color: $red;
   color: $white;
   font-size: 18px;
@@ -22,7 +22,7 @@ a.posts {
   display: block;
   text-align: center;
   border-radius: 4px;
-  box-shadow: 5px 10px 10px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: 5px 10px 10px 0 $shadow;
   background-color: $black;
   color: $white;
   font-size: 18px;

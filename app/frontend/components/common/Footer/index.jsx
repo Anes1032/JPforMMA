@@ -1,15 +1,14 @@
 import Link from "next/link";
-import style from "~/components/common/Footer/index.module.scss"
+import style from "~/components/common/Footer/index.module.scss";
 
 const Footer = () => {
-
   return (
     <div className={style.container}>
       <div className={style.main}>
         <div className={style.inner}>
           <Link href={"/"}>
             <a className={style.image}>
-              <img 
+              <img
                 src="/images/footer-logo.svg"
                 width={229}
                 height={216}
@@ -20,10 +19,12 @@ const Footer = () => {
         </div>
       </div>
       <div className={style.bottom}>
-        <p className={style.copyright}>©︎ 2022 JAPAN PORTAL  All Rights Reserved.</p>
+        <p className={style.copyright}>
+          ©︎ 2022 JAPAN PORTAL All Rights Reserved.
+        </p>
       </div>
     </div>
   );
 };
-  
-  export default Footer;
+
+export default Footer;

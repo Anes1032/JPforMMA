@@ -1,19 +1,19 @@
 import Link from "next/link";
 import { getPostTime } from "~/lib/util";
-import style from "~/components/pages/index/Hero/index.module.scss"
+import style from "~/components/pages/index/Hero/index.module.scss";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 
-const Hero = (data) => {
+const Hero = ({ data }) => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     autoplay: true,
-    autoplaySpeed: 3000
+    autoplaySpeed: 3000,
   };
-  const items = data.data.map(item => {
+  const items = data.map((item) => {
     return (
       <Link href={`/posts/${item.id}`} key={item.id}>
         <a className={style.item}>
@@ -26,19 +26,15 @@ const Hero = (data) => {
           <span className={style.infos}>
             {item.post_time && (
               <span className={style.time}>
-                <img
-                  src={"/images/clock.svg"}
-                  width={16}
-                  height={16}
-                />
+                <img src={"/images/clock.svg"} width={16} height={16} />
                 {getPostTime(item.post_time)}
               </span>
             )}
           </span>
         </a>
       </Link>
-    )
-  })
+    );
+  });
   return (
     <div className={style.container}>
       <Slider {...settings}>{items}</Slider>

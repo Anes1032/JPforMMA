@@ -1,14 +1,13 @@
 import Link from "next/link";
-import style from "~/components/common/Header/index.module.scss"
+import style from "~/components/common/Header/index.module.scss";
 
 const Header = () => {
-
   return (
     <div className={style.container}>
       <div className={style.inner}>
         <Link href={"/"}>
           <a>
-            <img 
+            <img
               src="/images/header-logo.svg"
               width={392}
               height={78}

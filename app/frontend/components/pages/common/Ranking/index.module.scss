@@ -3,7 +3,7 @@
 
 .container {
   width: $sub-box-width;
-  box-shadow: 5px 10px 10px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: 5px 10px 10px 0 $shadow;
   background-color: $white;
   height: 670px;
 }

@@ -1,11 +1,7 @@
-import style from "~/components/pages/common/Ranking/index.module.scss"
+import style from "~/components/pages/common/Ranking/index.module.scss";
 
 const Ranking = () => {
-  return (
-    <div className={style.container}>
-      
-    </div>
-  )
-}
+  return <div className={style.container}></div>;
+};
 
-export default Ranking
+export default Ranking;

@@ -1,5 +1,5 @@
-import Link from "next/link"
-import style from "~/components/pages/posts/detail/BackLinks/index.module.scss"
+import Link from "next/link";
+import style from "~/components/pages/posts/detail/BackLinks/index.module.scss";
 
 const BackLinks = () => {
   return (
@@ -11,7 +11,7 @@ const BackLinks = () => {
         <a className={style.posts}>新着記事一覧へ</a>
       </Link>
     </div>
-  )
-}
+  );
+};
 
-export default BackLinks
+export default BackLinks;
