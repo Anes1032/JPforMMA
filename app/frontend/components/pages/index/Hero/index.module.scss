@@ -1,0 +1,45 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+
+.container {
+  position: relative;
+  img {
+    width: 100%;
+    height: calc(100vh - 100px);
+    object-fit: cover;
+  }
+}
+
+.item {
+  position: relative;
+  display: block;
+
+  .title {
+    position: absolute;
+    bottom: 70px;
+    width: 100vw;
+    padding: 0 100px;
+    color: $white;
+    font-size: 54px;
+    font-weight: bold;
+  }
+
+  .infos {
+    position: absolute;
+    bottom: 25px;
+    right: 100px;
+    color: $white;
+    font-size: 18px;
+
+    .time {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 16px;
+        height: 16px;
+        margin-right: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="82.556" height="134.21" viewBox="0 0 82.556 134.21">
+  <defs>
+    <filter id="パス_162" x="0" y="0" width="61.649" height="134.21" filterUnits="userSpaceOnUse">
+      <feOffset dx="5" dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="パス_163" x="20.907" y="0" width="61.649" height="134.21" filterUnits="userSpaceOnUse">
+      <feOffset dx="5" dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="グループ_84" data-name="グループ 84" transform="translate(-27.286 -2.5)">
+    <g transform="matrix(1, 0, 0, 1, 27.29, 2.5)" filter="url(#パス_162)">
+      <path id="パス_162-2" data-name="パス 162" d="M76.435,5H64.2L29.787,64.6h0L64.2,124.21H76.435L42.022,64.6Z" transform="translate(-27.29 -2.5)" fill="#fff"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 27.29, 2.5)" filter="url(#パス_163)">
+      <path id="パス_163-2" data-name="パス 163" d="M62.022,64.6,96.435,5H84.2L49.787,64.6h0L84.2,124.21H96.435Z" transform="translate(-26.38 -2.5)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

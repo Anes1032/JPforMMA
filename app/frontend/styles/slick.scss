@@ -1,0 +1,62 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+
+.slick-arrow {
+  width: 50px;
+  height: 98px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: unset;
+  cursor: pointer;
+  font-size: 0;
+
+  &.slick-prev {
+    left: 32px;
+    background-image: url("/images/arrow-left.svg");
+    background-size: cover;
+  }
+
+  &.slick-next {
+    right: 32px;
+    background-image: url("/images/arrow-right.svg");
+    background-size: cover;
+  }
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  right: 50%;
+  display: flex !important;
+  justify-content: center;
+
+  @include screenMd {
+    margin-top: 12px;
+  }
+
+  li {
+    background-color: unset;
+    cursor: pointer;
+    margin: 0 5px;
+    line-height: 1;
+
+    button {
+      font-size: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      color: $white;
+      background-color: $white;
+      opacity: 0.5;
+    }
+
+    &.slick-active {
+      button {
+        background-color: $white;
+        opacity: 1;
+      }
+    }
+  }
+}

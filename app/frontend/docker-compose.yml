@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  next:
+    container_name: next
+    build: 
+      context: .
+    command: yarn start
+    ports:
+      - "3000:3000"
+
+  nginx:
+    container_name: nginx
+    build:
+      context: nginx
+    ports:
+      - "80:80"
+    environment:
+      - SERVER_IP=${SERVER_IP:-localhost}
+    depends_on:
+      - next

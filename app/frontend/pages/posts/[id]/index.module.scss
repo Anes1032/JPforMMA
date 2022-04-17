@@ -1,0 +1,13 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+
+.content {
+  width: $content-max-width;
+  margin: 50px auto 200px;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}

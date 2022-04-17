@@ -65,3 +65,5 @@ gem 'devise'
 gem 'cancancan'
 
 gem 'dotenv-rails'
+
+gem 'kaminari'
