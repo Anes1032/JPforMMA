@@ -17,7 +17,7 @@ const Layout = ({ children, title, description, canonical }) => {
         <meta httpEquiv="content-language" content="ja"></meta>
         <link rel="shortcut icon" href="/images/favicon.ico" />
         <link rel="canonical" href={canonical} />
-        <meta name="robots" content="index" />
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <Header />
       {children}

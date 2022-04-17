@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "fmt": "prettier --write ."
+    "fmt": "prettier --write .",
+    "prepare": "cd ../../  && husky install app/frontend/.husky"
   },
   "dependencies": {
     "next": "12.1.4",
@@ -19,7 +20,14 @@
   "devDependencies": {
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.8",
     "prettier": "^2.6.2",
     "sass": "^1.50.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,json,css,scss}": [
+      "prettier --write"
+    ]
   }
 }
