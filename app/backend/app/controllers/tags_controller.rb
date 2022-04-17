@@ -9,20 +9,32 @@ class TagsController < ApplicationController
 
   def show
     if params[:page]
-      posts = TagRelationship.joins(:post).select("post.*").where(tag_id: params[:id]).page(params[:page]).per(10)
+      posts = TagRelationship.joins(:post).select("posts.*").where(tag_id: params[:id]).page(params[:page]).per(10)
+      currentPage = params[:page].to_i
     else
-      posts = TagRelationship.joins(:post).select("post.*").where(tag_id: params[:id])
+      posts = TagRelationship.joins(:post).select("posts.*").where(tag_id: params[:id])
+      currentPage = 1
     end
+    totalCount = TagRelationship.joins(:post).select("posts.*").where(tag_id: params[:id]).all.length
+    pagenations = {
+      currentPage: currentPage,
+      totalCount: totalCount
+    }
+    tags = Tag.all
+    fighters = Fighter.all
     data = {
       tag: @tag,
-      posts: posts
+      posts: posts,
+      pagenations: pagenations,
+      tags: tags,
+      fighters: fighters,
     }
     render json: { status: 'SUCCESS', message: 'Loaded the tag', data: data }
   end
 
   private
 
-  def set_tag
+  def set_post
     @tag = Tag.find(params[:id])
   end
 

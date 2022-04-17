@@ -4,11 +4,26 @@ class PostsController < ApplicationController
 
   def index
     if params[:page]
-      posts = Post.order(post_time: :desc).joins(:category).select("posts.*", "categories.*").page(params[:page]).per(10)
+      posts = Post.order(post_time: :desc).page(params[:page]).per(10)
+      currentPage = params[:page].to_i
     else 
-      posts = Post.joins(:category).select("posts.*", "categories.*").order(post_time: :desc)
+      posts = Post.order(post_time: :desc)
+      currentPage = 1
     end
-    render json: { status: 'SUCCESS', message: 'Loaded posts', data: posts }
+    totalCount = Post.all.length
+    pagenations = {
+      currentPage: currentPage,
+      totalCount: totalCount
+    }
+    tags = Tag.all
+    fighters = Fighter.all
+    data = {
+      posts: posts,
+      pagenations: pagenations,
+      tags: tags,
+      fighters: fighters
+    }
+    render json: { status: 'SUCCESS', message: 'Loaded posts', data: data }
   end
 
   def top

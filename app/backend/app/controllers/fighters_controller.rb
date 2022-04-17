@@ -9,20 +9,33 @@ class FightersController < ApplicationController
 
   def show
     if params[:page]
-      posts = FighterRelationship.joins(:post).select("post.*").where(fighter_id: params[:id]).page(params[:page]).per(10)
+      posts = FighterRelationship.joins(:post).select("posts.*").where(fighter_id: params[:id]).page(params[:page]).per(10)
+      currentPage = params[:page].to_i
     else
-      posts = FighterRelationship.joins(:post).select("post.*").where(fighter_id: params[:id])
+      posts = FighterRelationship.joins(:post).select("posts.*").where(fighter_id: params[:id])
+      currentPage = 1
     end
+    totalCount = FighterRelationship.joins(:post).select("posts.*").where(fighter_id: params[:id]).all.length
+    pagenations = {
+      currentPage: currentPage,
+      totalCount: totalCount
+    }
+    tags = Tag.all
+    fighters = Fighter.all
     data = {
       fighter: @fighter,
-      posts: posts
+      posts: posts,
+      pagenations: pagenations,
+      tags: tags,
+      fighters: fighters,
+
     }
     render json: { status: 'SUCCESS', message: 'Loaded the fighter', data: data }
   end
 
   private
 
-  def set_fighter
+  def set_post
     @fighter = Fighter.find(params[:id])
   end
 
