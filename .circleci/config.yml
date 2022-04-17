@@ -60,3 +60,10 @@ workflows:
           filters:
             branches:
               only: master
+      - frontend_build
+      - frontend_deploy:
+          requires:
+            - frontend_build
+          filters:
+            branches:
+              only: master
