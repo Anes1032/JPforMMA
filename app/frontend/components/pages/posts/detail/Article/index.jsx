@@ -1,4 +1,4 @@
-import { getPostTime } from "~/lib/util";
+import Infos from "~/components/pages/common/Infos";
 import style from "~/components/pages/posts/detail/Article/index.module.scss";
 
 const Article = ({ data }) => {
@@ -38,14 +38,7 @@ const Article = ({ data }) => {
           width={540}
           height={405}
         />
-        <div className={style.infos}>
-          {data.post_time && (
-            <span className={style.time}>
-              <img src={"/images/clock-grey.svg"} width={16} height={16} />
-              {getPostTime(data.post_time)}
-            </span>
-          )}
-        </div>
+        <Infos date={data.post_time} />
         <div
           className={style.content}
           dangerouslySetInnerHTML={{ __html: data.en_content }}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Infos from "~/components/pages/common/Infos";
 import { getPostTime, omittedText } from "~/lib/util";
 import style from "~/components/pages/index/common/Items/index.module.scss";
 
@@ -12,14 +13,7 @@ const Items = ({ data }) =>
           <p className={style.description}>
             {omittedText(item.en_sub_title, 200)}
           </p>
-          <span className={style.infos}>
-            {item.post_time && (
-              <span className={style.time}>
-                <img src={"/images/clock-grey.svg"} width={16} height={16} />
-                {getPostTime(item.post_time)}
-              </span>
-            )}
-          </span>
+          <Infos date={item.post_time} />
         </span>
       </a>
     </Link>

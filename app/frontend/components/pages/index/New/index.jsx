@@ -9,7 +9,7 @@ const New = ({ data }) => {
         <span className={style.text}>News</span>
       </h2>
       <div className={style.readmore}>
-        <Link href={"/"}>
+        <Link href={"/posts/"}>
           <a className={style.link}>新着記事を見る＞＞</a>
         </Link>
       </div>

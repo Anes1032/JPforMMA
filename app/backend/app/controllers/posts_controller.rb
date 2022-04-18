@@ -33,22 +33,26 @@ class PostsController < ApplicationController
     news = Post.order(post_time: :desc).limit(3)
     tags = Tag.all
     fighters = Fighter.all
+    rankings = Post.where.not(ranking: nil).order(ranking: :asc).limit(5)
     data = {
       hero: hero,
       recommend: recommend,
       pickup: pickup,
       news: news,
       tags: tags,
-      fighters: fighters
+      fighters: fighters,
+      rankings: rankings
     }
     render json: { status: 'SUCCESS', message: 'Loaded posts', data: data }
   end
 
   def show
     tags = TagRelationship.joins(:tag).select("tags.id", "tags.name").where(post_id: params[:id])
+    rankings = Post.where.not(ranking: nil).order(ranking: :asc).limit(5)
     data = {
       post: @post,
-      tags: tags
+      tags: tags,
+      rankings: rankings
     }
     render json: { status: 'SUCCESS', message: 'Loaded the post', data: data }
   end
