@@ -58,14 +58,15 @@ def get_posts() :
     else :
       return ""
   
-  for i in range(1) :
+  for i in range(15) :
     time.sleep(5.0)
-    pageNumber = i + 1
+    pageNumber = 15 - i
     url = "https://www.mmamania.com/latest-news/archives/" + str(pageNumber)
     res = requests.get(url)
     soup = BeautifulSoup(res.text, "html.parser")
     doms = soup.select('.c-entry-box--compact__image-wrapper')
     links = [dom.get('href') for dom in doms]
+    links.reverse()
     for link in links :
       time.sleep(3.0)
       res = requests.get(link)
