@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { getPostTime, omittedText } from "~/lib/util";
+import Infos from "~/components/pages/common/Infos";
+import { omittedText } from "~/lib/util";
 import style from "~/components/pages/index/Pickup/index.module.scss";
 
 const Pickup = ({ data }) => {
@@ -18,14 +19,7 @@ const Pickup = ({ data }) => {
           <h3 className={style.description}>
             {omittedText(item.en_sub_title)}
           </h3>
-          <span className={style.infos}>
-            {item.post_time && (
-              <span className={style.time}>
-                <img src={"/images/clock-grey.svg"} width={16} height={16} />
-                {getPostTime(item.post_time)}
-              </span>
-            )}
-          </span>
+          <Infos date={item.post_time} />
         </a>
       </Link>
     );

@@ -14,7 +14,7 @@ const Index = ({ data }) => {
       <div className={style.content}>
         <div className={style.box}>
           <New data={data.news} />
-          <Ranking />
+          <Ranking data={data.rankings} />
         </div>
         <Pickup data={data.pickup} />
         <div className={style.box}>

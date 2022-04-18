@@ -23,7 +23,7 @@ const Index = ({ data }) => {
             name={"記事一覧"}
           />
           <div className={style.sidebar}>
-            <Ranking />
+            <Ranking data={data.rankings} />
             <Tags name={"急上昇ワード"} data={data.tags} slug={"tags"} />
             <Tags
               name={"人気UFCファイター"}

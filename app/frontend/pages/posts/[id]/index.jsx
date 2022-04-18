@@ -24,7 +24,7 @@ const Index = ({ data }) => {
         <div className={style.box}>
           <Article data={data.post} />
           <div className={style.sidebar}>
-            <Ranking />
+            <Ranking data={data.rankings} />
             <BackLinks />
             <Tags name={"関連するキーワード"} data={data.tags} slug={"tags"} />
           </div>
