@@ -17,11 +17,13 @@ class PostsController < ApplicationController
     }
     tags = Tag.all
     fighters = Fighter.all
+    rankings = Post.where.not(ranking: nil).order(ranking: :asc).limit(5)
     data = {
       posts: posts,
       pagenations: pagenations,
       tags: tags,
-      fighters: fighters
+      fighters: fighters,
+      rankings: rankings
     }
     render json: { status: 'SUCCESS', message: 'Loaded posts', data: data }
   end

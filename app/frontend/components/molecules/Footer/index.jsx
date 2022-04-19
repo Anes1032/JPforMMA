@@ -7,8 +7,9 @@ const Footer = () => {
       <div className={style.main}>
         <div className={style.inner}>
           <Link href={"/"}>
-            <a className={style.image}>
+            <a>
               <img
+                className={style.image}
                 src="/images/footer-logo.svg"
                 width={229}
                 height={216}

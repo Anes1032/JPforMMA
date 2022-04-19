@@ -8,6 +8,10 @@
   color: $grey;
   justify-content: flex-end;
 
+  @include screenMd {
+    font-size: convertWithToVw(12);
+  }
+
   .time {
     display: flex;
     align-items: center;
@@ -16,6 +20,11 @@
       width: 16px;
       height: 16px;
       margin-right: 10px;
+
+      @include screenMd {
+        width: convertWithToVw(12);
+        height: convertWithToVw(12);
+      }
     }
   }
 }

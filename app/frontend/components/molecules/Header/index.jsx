@@ -8,6 +8,7 @@ const Header = () => {
         <Link href={"/"}>
           <a>
             <img
+              className={style.image}
               src="/images/header-logo.svg"
               width={392}
               height={78}

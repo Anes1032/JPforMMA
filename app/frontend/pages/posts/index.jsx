@@ -12,6 +12,7 @@ const Index = ({ data }) => {
       name: "記事一覧",
     },
   ];
+
   return (
     <Layout>
       <div className={style.content}>

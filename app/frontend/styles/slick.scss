@@ -11,16 +11,29 @@
   cursor: pointer;
   font-size: 0;
 
+  @include screenMd {
+    width: convertWithToVw(20);
+    height: convertWithToVw(38);
+  }
+
   &.slick-prev {
     left: 32px;
     background-image: url("/images/arrow-left.svg");
     background-size: cover;
+
+    @include screenMd {
+      left: convertWithToVw(16);
+    }
   }
 
   &.slick-next {
     right: 32px;
     background-image: url("/images/arrow-right.svg");
     background-size: cover;
+
+    @include screenMd {
+      right: convertWithToVw(16);
+    }
   }
 }
 
@@ -34,6 +47,7 @@
 
   @include screenMd {
     margin-top: 12px;
+    bottom: convertWithToVw(10);
   }
 
   li {
@@ -50,6 +64,11 @@
       color: $white;
       background-color: $white;
       opacity: 0.5;
+
+      @include screenMd {
+        width: convertWithToVw(10);
+        height: convertWithToVw(10);
+      }
     }
 
     &.slick-active {

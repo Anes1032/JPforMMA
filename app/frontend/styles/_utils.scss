@@ -17,3 +17,8 @@
     @content;
   }
 }
+
+$container: 375;
+@function convertWithToVw($width) {
+  @return calc(($width / $container) * 100) + vw;
+}

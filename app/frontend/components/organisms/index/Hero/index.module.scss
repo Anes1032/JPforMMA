@@ -7,6 +7,10 @@
     width: 100%;
     height: calc(100vh - 100px);
     object-fit: cover;
+
+    @include screenMd {
+      height: convertWithToVw(250);
+    }
   }
 }
 
@@ -22,6 +26,12 @@
     color: $white;
     font-size: 54px;
     font-weight: bold;
+
+    @include screenMd {
+      bottom: convertWithToVw(30);
+      padding: 0 convertWithToVw(16);
+      font-size: convertWithToVw(16);
+    }
   }
 
   .infos {
@@ -31,6 +41,12 @@
     color: $white;
     font-size: 18px;
 
+    @include screenMd {
+      bottom: convertWithToVw(10);
+      right: convertWithToVw(16);
+      font-size: convertWithToVw(12);
+    }
+
     .time {
       display: flex;
       align-items: center;
@@ -39,6 +55,11 @@
         width: 16px;
         height: 16px;
         margin-right: 10px;
+
+        @include screenMd {
+          width: convertWithToVw(10);
+          height: convertWithToVw(10);
+        }
       }
     }
   }

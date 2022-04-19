@@ -3,22 +3,42 @@
 
 .main {
   background-color: $white;
+
+  @include screenMd {
+    background-color: $black;
+  }
 }
 
 .inner {
   width: $content-max-width;
   margin: 0 auto;
   padding: 67px 0;
+
+  @include screenMd {
+    width: 100%;
+    padding: convertWithToVw(50) 0;
+  }
 }
 
 .image {
   width: 229px;
   height: 216px;
+
+  @include screenMd {
+    display: block;
+    margin: 0 auto;
+    width: convertWithToVw(96);
+    height: convertWithToVw(90);
+  }
 }
 
 .bottom {
   background-color: #0f0f0f;
   padding: 15px 0;
+
+  @include screenMd {
+    padding: convertWithToVw(10) 0;
+  }
 }
 
 .copyright {
@@ -28,4 +48,9 @@
   letter-spacing: 0.3px;
   font-size: 14px;
   color: $white;
+
+  @include screenMd {
+    width: 100%;
+    font-size: convertWithToVw(12);
+  }
 }

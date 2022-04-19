@@ -5,6 +5,10 @@
 .container {
   width: $sub-box-width;
   margin-top: 80px;
+
+  @include screenMd {
+    margin-top: convertWithToVw(50);
+  }
 }
 
 .title {
@@ -12,12 +16,20 @@
   font-weight: bold;
   letter-spacing: 1.25px;
   color: $black;
+
+  @include screenMd {
+    font-size: convertWithToVw(20);
+  }
 }
 
 .items {
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
+
+  @include screenMd {
+    margin-top: convertWithToVw(10);
+  }
 }
 
 a.item {
@@ -31,4 +43,12 @@ a.item {
   padding: 4px 10px;
   border-radius: 12px;
   background-color: $white;
+
+  @include screenMd {
+    margin-top: convertWithToVw(10);
+    margin-right: convertWithToVw(10);
+    font-size: convertWithToVw(14);
+    padding: convertWithToVw(4) convertWithToVw(10);
+    background-color: $bg-color;
+  }
 }

@@ -9,4 +9,16 @@
   min-width: $content-max-width;
   padding: 10px 70px;
   display: flex;
+
+  @include screenMd {
+    min-width: unset;
+    padding: convertWithToVw(10) convertWithToVw(20);
+  }
+}
+
+.image {
+  @include screenMd {
+    width: convertWithToVw(147);
+    height: auto;
+  }
 }

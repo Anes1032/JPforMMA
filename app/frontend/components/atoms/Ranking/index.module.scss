@@ -6,6 +6,14 @@
   box-shadow: 5px 10px 10px 0 $shadow;
   background-color: $white;
   padding: 15px;
+
+  @include screenMd {
+    width: unset;
+    padding: convertWithToVw(30) convertWithToVw(16);
+    background-color: $bg-color;
+    box-shadow: unset;
+    margin: 0 convertWithToVw(-16);
+  }
 }
 
 .title {
@@ -13,10 +21,18 @@
   font-size: 26px;
   color: $black;
   font-weight: bold;
+
+  @include screenMd {
+    font-size: convertWithToVw(20);
+  }
 }
 
 .content {
   margin-top: 30px;
+
+  @include screenMd {
+    margin-top: convertWithToVw(20);
+  }
 }
 
 .item {
@@ -26,6 +42,11 @@
     margin-top: 15px;
     padding-top: 15px;
     border-top: 2px solid #e4e4e4;
+
+    @include screenMd {
+      margin-top: convertWithToVw(12);
+      padding-top: convertWithToVw(12);
+    }
   }
 
   &:nth-child(n + 4) {
@@ -42,11 +63,21 @@
     color: $white;
     font-size: 30px;
     text-align: center;
+
+    @include screenMd {
+      min-width: convertWithToVw(35);
+      width: convertWithToVw(35);
+      font-size: convertWithToVw(25);
+    }
   }
 
   .image {
     margin: 0 10px;
     object-fit: cover;
+
+    @include screenMd {
+      margin: 0 convertWithToVw(5);
+    }
   }
 
   .block {
@@ -58,24 +89,10 @@
     font-size: 14px;
     color: $black;
     margin-bottom: 5px;
-  }
 
-  .infos {
-    margin-top: auto;
-    display: flex;
-    font-size: 12px;
-    color: $grey;
-    justify-content: flex-end;
-
-    .time {
-      display: flex;
-      align-items: center;
-
-      img {
-        width: 16px;
-        height: 16px;
-        margin-right: 10px;
-      }
+    @include screenMd {
+      font-size: convertWithToVw(14);
+      margin-bottom: convertWithToVw(5);
     }
   }
 }

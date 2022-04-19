@@ -22,10 +22,15 @@ const Posts = ({ data, pagenations, name }) => {
                   width={260}
                   height={190}
                 />
-                <h2 className={style.item_title}>
-                  {omittedText(item.en_title, 50)}
-                </h2>
-                <Infos date={item.post_time} />
+                <div className={style.block}>
+                  <h2 className={style.item_title}>
+                    {omittedText(item.en_title, 50)}
+                  </h2>
+                  <p className={style.description}>
+                    {omittedText(item.en_sub_title, 100)}
+                  </p>
+                  <Infos date={item.post_time} />
+                </div>
               </a>
             </Link>
           ))}
