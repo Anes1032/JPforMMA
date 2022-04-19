@@ -58,9 +58,9 @@ def get_posts() :
     else :
       return ""
   
-  for i in range(1) :
+  for i in range(15) :
     time.sleep(5.0)
-    pageNumber = 1 - i
+    pageNumber = i + 1
     url = "https://www.mmamania.com/latest-news/archives/" + str(pageNumber)
     res = requests.get(url)
     soup = BeautifulSoup(res.text, "html.parser")
