@@ -1,0 +1,46 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+@import "~/styles/mixin.scss";
+
+.container {
+  width: $main-box-width;
+  @include screenMd {
+    width: 100%;
+  }
+}
+
+.title {
+  @include title_style;
+}
+
+.readmore {
+  margin-top: 5px;
+  text-align: right;
+
+  @include screenMd {
+    margin-top: convertWithToVw(5);
+  }
+
+  .link {
+    font-size: 16px;
+    font-weight: lighter;
+    color: #a4a4a4;
+
+    @include screenMd {
+      font-size: convertWithToVw(14);
+    }
+  }
+}
+
+.content {
+  margin-top: 10px;
+  background-color: $white;
+  box-shadow: 5px 10px 10px 0 $shadow;
+  padding: 30px;
+
+  @include screenMd {
+    margin-top: convertWithToVw(20);
+    box-shadow: unset;
+    padding: 0;
+  }
+}

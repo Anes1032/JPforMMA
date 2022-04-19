@@ -1,0 +1,45 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+
+.container {
+  margin-top: 80px;
+
+  @include screenMd {
+    margin-top: convertWithToVw(50);
+  }
+}
+
+a.top {
+  display: block;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 5px 10px 10px 0 $shadow;
+  background-color: $red;
+  color: $white;
+  font-size: 18px;
+  line-height: 45px;
+  font-weight: bold;
+
+  @include screenMd {
+    font-size: convertWithToVw(18);
+    line-height: convertWithToVw(50);
+  }
+}
+
+a.posts {
+  margin-top: 20px;
+  display: block;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 5px 10px 10px 0 $shadow;
+  background-color: $black;
+  color: $white;
+  font-size: 18px;
+  line-height: 45px;
+  font-weight: bold;
+
+  @include screenMd {
+    font-size: convertWithToVw(18);
+    line-height: convertWithToVw(50);
+  }
+}

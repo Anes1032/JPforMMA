@@ -1,0 +1,41 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+
+.container {
+  padding: 0 30px;
+
+  @include screenMd {
+    padding: 0;
+  }
+}
+
+.inner {
+  display: flex;
+  overflow: auto;
+}
+
+.item {
+  display: flex;
+  font-weight: lighter;
+  white-space: nowrap;
+
+  .link {
+    font-size: 18px;
+    color: $grey;
+
+    @include screenMd {
+      font-size: convertWithToVw(16);
+    }
+  }
+
+  .arrow {
+    margin: 0 10px;
+    font-size: 16px;
+    color: $grey;
+
+    @include screenMd {
+      margin: 0 convertWithToVw(10);
+      font-size: convertWithToVw(14);
+    }
+  }
+}

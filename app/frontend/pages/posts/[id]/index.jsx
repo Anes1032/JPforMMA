@@ -1,9 +1,9 @@
-import Layout from "~/components/common/Layout";
-import Breadcrumbs from "~/components/common/Breadcrumbs";
-import Article from "~/components/pages/posts/detail/Article";
-import BackLinks from "~/components/pages/posts/detail/BackLinks";
-import Ranking from "~/components/pages/common/Ranking";
-import Tags from "~/components/pages/common/Tags";
+import Layout from "~/components/molecules/Layout";
+import Breadcrumbs from "~/components/molecules/Breadcrumbs";
+import Article from "~/components/organisms/posts/detail/Article";
+import BackLinks from "~/components/organisms/posts/detail/BackLinks";
+import Ranking from "~/components/atoms/Ranking";
+import Tags from "~/components/atoms/Tags";
 import style from "~/pages/posts/[id]/index.module.scss";
 
 const Index = ({ data }) => {

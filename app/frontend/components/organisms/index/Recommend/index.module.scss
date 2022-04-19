@@ -1,0 +1,26 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+@import "~/styles/mixin.scss";
+
+.container {
+  width: $main-box-width;
+  @include screenMd {
+    width: 100%;
+  }
+}
+.title {
+  @include title_style;
+}
+
+.content {
+  margin-top: 10px;
+  background-color: $white;
+  box-shadow: 5px 10px 10px 0 $shadow;
+  padding: 30px;
+
+  @include screenMd {
+    margin-top: convertWithToVw(20);
+    box-shadow: unset;
+    padding: 0;
+  }
+}

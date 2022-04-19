@@ -9,8 +9,15 @@
     font-size: 40px;
     font-weight: bold;
     letter-spacing: 2px;
-    color: #f70d0d;
+    color: $red;
     position: relative;
+
+    @include screenMd {
+      font-size: convertWithToVw(24);
+      color: $black;
+      padding-bottom: convertWithToVw(5);
+      border-bottom: 2px solid $red;
+    }
 
     &::after {
       content: "";
@@ -21,6 +28,10 @@
       width: calc($main-box-width - 100% - 10px);
       height: 5px;
       background-color: #e4e4e4;
+
+      @include screenMd {
+        display: none;
+      }
     }
   }
 }

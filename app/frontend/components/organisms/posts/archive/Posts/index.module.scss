@@ -1,0 +1,118 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+@import "~/styles/mixin.scss";
+
+.container {
+  width: $main-box-width;
+
+  @include screenMd {
+    width: 100%;
+  }
+}
+
+.title {
+  @include title_style;
+}
+
+.content {
+  margin-top: 25px;
+  padding: 30px;
+  box-shadow: 5px 10px 10px 0 $shadow;
+  background-color: $white;
+
+  @include screenMd {
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include screenMd {
+      display: block;
+    }
+  }
+
+  .item {
+    width: 50%;
+
+    @include screenMd {
+      width: 100%;
+      display: flex;
+    }
+
+    &:nth-child(n + 3) {
+      margin-top: 15px;
+      padding-top: 15px;
+    }
+
+    &:nth-child(n + 2) {
+      @include screenMd {
+        margin-top: convertWithToVw(12);
+        padding-top: convertWithToVw(12);
+        border-top: 2px solid #e4e4e4;
+      }
+    }
+
+    &:nth-child(odd) {
+      padding-right: 15px;
+
+      @include screenMd {
+        padding-right: 0;
+      }
+    }
+
+    &:nth-child(even) {
+      padding-left: 15px;
+
+      @include screenMd {
+        padding-left: 0;
+      }
+    }
+
+    .image {
+      object-fit: cover;
+
+      @include screenMd {
+        width: convertWithToVw(134);
+        height: convertWithToVw(89);
+      }
+    }
+
+    .block {
+      display: flex;
+      flex-direction: column;
+
+      @include screenMd {
+        margin-left: convertWithToVw(15);
+      }
+    }
+
+    &_title {
+      margin-top: 15px;
+      font-size: 18px;
+      color: $black;
+      list-style: 1.3;
+      font-weight: bold;
+
+      @include screenMd {
+        margin: 0;
+        font-size: convertWithToVw(14);
+      }
+    }
+
+    .description {
+      margin: 10px 0;
+      font-size: 16px;
+      color: $black;
+      list-style: 1.3;
+
+      @include screenMd {
+        margin: convertWithToVw(5) 0;
+        font-size: convertWithToVw(12);
+      }
+    }
+  }
+}

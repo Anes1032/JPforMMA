@@ -3,7 +3,13 @@
 
 .content {
   width: $content-max-width;
-  margin: 50px auto 200px;
+  margin: 30px auto 200px;
+
+  @include screenMd {
+    width: 100%;
+    margin: convertWithToVw(30) auto convertWithToVw(100);
+    padding: 0 convertWithToVw(16);
+  }
 }
 
 .box {
@@ -11,4 +17,13 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-top: 30px;
+
+  @include screenMd {
+    margin-top: convertWithToVw(30);
+    display: block;
+
+    > div:nth-child(2) {
+      margin-top: convertWithToVw(50);
+    }
+  }
 }

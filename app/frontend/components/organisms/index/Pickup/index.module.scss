@@ -1,0 +1,148 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+@import "~/styles/mixin.scss";
+
+.container {
+  margin-top: 50px;
+  width: $content-max-width;
+
+  @include screenMd {
+    width: 100%;
+    margin-top: convertWithToVw(50);
+  }
+}
+
+.title {
+  text-align: center;
+
+  @include screenMd {
+    text-align: left;
+  }
+
+  .text {
+    position: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #f70d0d;
+    position: relative;
+
+    @include screenMd {
+      font-size: convertWithToVw(20);
+      color: $black;
+      padding-bottom: convertWithToVw(5);
+      border-bottom: 2px solid $red;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: calc(100% + 40px);
+      width: calc($content-max-width / 2 - 50% - 40px);
+      height: 5px;
+      background-color: #e4e4e4;
+
+      @include screenMd {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: calc(100% + 40px);
+      width: calc($content-max-width / 2 - 50% - 40px);
+      height: 5px;
+      background-color: #e4e4e4;
+
+      @include screenMd {
+        display: none;
+      }
+    }
+  }
+}
+
+.content {
+  margin-top: 30px;
+  background-color: $white;
+  box-shadow: 5px 10px 10px 0 $shadow;
+  padding: 30px;
+  display: flex;
+
+  @include screenMd {
+    display: block;
+    margin-top: convertWithToVw(24);
+    box-shadow: unset;
+    padding: 0;
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+
+  @include screenMd {
+    display: block;
+    box-shadow: 0 3px 6px 0 $shadow;
+    padding: convertWithToVw(15);
+  }
+
+  &:nth-child(n + 2) {
+    margin-left: 40px;
+
+    @include screenMd {
+      margin: convertWithToVw(30) 0 0;
+    }
+  }
+
+  .block {
+    position: relative;
+  }
+
+  .image {
+    width: 280px;
+    height: 210px;
+    object-fit: cover;
+
+    @include screenMd {
+      width: 100%;
+      height: convertWithToVw(214);
+    }
+  }
+
+  .title {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    padding: 0 17px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.2;
+    color: $white;
+
+    @include screenMd {
+      margin: convertWithToVw(10) 0 0;
+      position: initial;
+      padding: 0;
+      font-size: convertWithToVw(17);
+      color: $black;
+    }
+  }
+
+  .description {
+    font-size: 14px;
+    margin-top: 10px;
+    color: $grey;
+    margin-bottom: 15px;
+
+    @include screenMd {
+      font-size: convertWithToVw(14);
+      margin-top: convertWithToVw(10);
+    }
+  }
+}
