@@ -1,3 +1,4 @@
+import Api from "~/lib/api";
 import Layout from "~/components/molecules/Layout";
 import Hero from "~/components/organisms/index/Hero";
 import New from "~/components/organisms/index/New";
@@ -34,9 +35,7 @@ const Index = ({ data }) => {
 };
 
 export const getServerSideProps = async () => {
-  const requestUrl = `${process.env.NEXT_PUBLIC_API_URL}/posts/top`;
-  const res = await fetch(requestUrl);
-  const data = await res.json();
+  const data = new Api("top").getData();
 
   return {
     props: data,
