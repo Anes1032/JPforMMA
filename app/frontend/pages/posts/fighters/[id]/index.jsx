@@ -1,3 +1,4 @@
+import Api from "~/lib/api";
 import Layout from "~/components/molecules/Layout";
 import Breadcrumbs from "~/components/molecules/Breadcrumbs";
 import Ranking from "~/components/atoms/Ranking";
@@ -40,9 +41,7 @@ const Index = ({ data }) => {
 export const getServerSideProps = async ({ params, query }) => {
   const id = params?.id;
   const page = query.page ? query.page : 1;
-  const requestUrl = `${process.env.NEXT_PUBLIC_API_URL}/fighters/${id}?page=${page}`;
-  const res = await fetch(requestUrl);
-  const data = await res.json();
+  const data = new Api("fighters", `/${id}?page=${page}`).getData();
 
   return {
     props: data,
