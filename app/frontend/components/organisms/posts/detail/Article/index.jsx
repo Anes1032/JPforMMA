@@ -1,4 +1,5 @@
 import Infos from "~/components/atoms/Infos";
+import Source from "~/components/atoms/Source";
 import style from "~/components/organisms/posts/detail/Article/index.module.scss";
 
 const Article = ({ data }) => {
@@ -23,6 +24,7 @@ const Article = ({ data }) => {
       </a>
     ));
   };
+  console.log(data);
   return (
     <div className={style.container}>
       <div className={style.head}>
@@ -39,6 +41,7 @@ const Article = ({ data }) => {
           height={405}
         />
         <Infos date={data.post_time} />
+        <Source url={data.reference_url} />
         <div
           className={style.content}
           dangerouslySetInnerHTML={{ __html: data.en_content }}

@@ -20,7 +20,7 @@ const Ranking = ({ data }) => {
               />
               <span className={style.block}>
                 <p className={style.item_title}>
-                  {omittedText(item.en_title, 80)}
+                  {omittedText(item.en_title, 50)}
                 </p>
                 <Infos date={item.post_time} />
               </span>
