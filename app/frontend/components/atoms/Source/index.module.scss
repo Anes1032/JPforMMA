@@ -1,0 +1,8 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+
+a.link {
+  color: $grey;
+  font-size: 14px;
+  text-decoration: underline;
+}
