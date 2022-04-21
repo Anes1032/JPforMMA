@@ -8,7 +8,7 @@ const Layout = ({
   title,
   description,
   canonical,
-  ogp = "/images/og-image.png",
+  ogp = "https://mma.jp-portal.com/images/og-image.png",
 }) => {
   return (
     <>
@@ -26,7 +26,10 @@ const Layout = ({
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta httpEquiv="content-language" content="ja"></meta>
-        <link rel="shortcut icon" href="/images/favicon.ico" />
+        <link
+          rel="shortcut icon"
+          href="https://mma.jp-portal.com/images/favicon.ico"
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"

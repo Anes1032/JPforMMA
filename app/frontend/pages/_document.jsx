@@ -35,6 +35,13 @@ export default class MyDocument extends Document {
       <Html lang="ja">
         <Head>{this.renderGtagSnippet()}</Head>
         <body>
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GA_TRACKING_ID}`}
+              height="0"
+              width="0"
+            ></iframe>
+          </noscript>
           <Main />
           <NextScript />
         </body>

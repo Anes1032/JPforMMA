@@ -19,7 +19,13 @@ const Article = ({ data }) => {
         url: `https://social-plugins.line.me/lineit/share?url=${baseUrl}`,
       },
     ].map((item, i) => (
-      <a className={style.icon} href={item.url} target="_blank" key={i}>
+      <a
+        className={style.icon}
+        href={item.url}
+        target="_blank"
+        key={i}
+        rel="noopener, noreferrer"
+      >
         <img src={`/images/${item.name}${n}.svg`} alt={"twitter"} />
       </a>
     ));
