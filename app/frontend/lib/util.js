@@ -23,3 +23,8 @@ export const omittedText = (s, n) => {
   const maxLength = n;
   return s.length > maxLength ? s.substr(0, maxLength) + "..." : s;
 };
+
+export const buildCanonical = (...args) => {
+  if (args.length === 0) return "https://mma.jp-portal.com/";
+  else return `https://mma.jp-portal.com/${args.join("/")}/`;
+};

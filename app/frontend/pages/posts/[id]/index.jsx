@@ -1,10 +1,13 @@
 import Api from "~/lib/api";
+import { buildCanonical } from "~/lib/util";
 import Layout from "~/components/molecules/Layout";
 import Breadcrumbs from "~/components/molecules/Breadcrumbs";
 import Article from "~/components/organisms/posts/detail/Article";
 import BackLinks from "~/components/organisms/posts/detail/BackLinks";
 import Ranking from "~/components/atoms/Ranking";
 import Tags from "~/components/atoms/Tags";
+import ArticleJsonLd from "~/components/JsonLd/Article";
+import BreadcrumbsJsonLd from "~/components/JsonLd/Breadcrumbs";
 import style from "~/pages/posts/[id]/index.module.scss";
 
 const Index = ({ data }) => {
@@ -18,8 +21,19 @@ const Index = ({ data }) => {
       name: data.post.en_title,
     },
   ];
+  const title = `${data.post.en_title}｜JAPAN PORTAL for UFC`;
+  const description = data.post.en_sub_title;
+  const canonical = buildCanonical("posts", data.post.id);
+  const ogp = data.post.image_url;
   return (
-    <Layout>
+    <Layout
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogp={ogp}
+    >
+      <ArticleJsonLd data={data.post} />
+      <BreadcrumbsJsonLd breadcrumbs={breadcrumbs} />
       <div className={style.content}>
         <Breadcrumbs data={breadcrumbs} />
         <div className={style.box}>

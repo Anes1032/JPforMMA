@@ -1,8 +1,15 @@
 import Head from "next/head";
 import Header from "~/components/molecules/Header";
 import Footer from "~/components/molecules/Footer";
+import OrganizationJsonLd from "~/components/JsonLd/Organization";
 
-const Layout = ({ children, title, description, canonical }) => {
+const Layout = ({
+  children,
+  title,
+  description,
+  canonical,
+  ogp = "/images/og-image.png",
+}) => {
   return (
     <>
       <Head>
@@ -11,14 +18,24 @@ const Layout = ({ children, title, description, canonical }) => {
         <meta property="og:url" content={canonical} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content="/images/og-image.png" />
+        <meta property="og:image" content={ogp} />
+        <meta name="twitter:card" content={"summary_large_image"} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogp} />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta httpEquiv="content-language" content="ja"></meta>
         <link rel="shortcut icon" href="/images/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/images/apple-touch-icon.png"
+        ></link>
         <link rel="canonical" href={canonical} />
         <meta name="robots" content="noindex, nofollow" />
       </Head>
+      <OrganizationJsonLd />
       <Header />
       {children}
       <Footer />
