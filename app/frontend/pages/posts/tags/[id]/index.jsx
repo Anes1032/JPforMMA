@@ -1,9 +1,11 @@
 import Api from "~/lib/api";
+import { buildCanonical } from "~/lib/util";
 import Layout from "~/components/molecules/Layout";
 import Breadcrumbs from "~/components/molecules/Breadcrumbs";
 import Ranking from "~/components/atoms/Ranking";
 import Tags from "~/components/atoms/Tags";
 import Posts from "~/components/organisms/posts/archive/Posts";
+import BreadcrumbsJsonLd from "~/components/JsonLd/Breadcrumbs";
 import style from "~/pages/posts/index.module.scss";
 
 const Index = ({ data }) => {
@@ -13,8 +15,13 @@ const Index = ({ data }) => {
       name: `${data.tag.name}`,
     },
   ];
+  const title = `${data.tag.name}に関する記事一覧｜JAPAN PORTAL for UFC`;
+  const description =
+    "日本語では読むことのできない本場のUFC情報をお届けします。日本人選手や有名スター選手の情報だけでなく、全ての情報を取り入れたい格闘技マニアのためのサイトです。";
+  const canonical = buildCanonical("tags", data.tag.id);
   return (
-    <Layout>
+    <Layout title={title} description={description} canonical={canonical}>
+      <BreadcrumbsJsonLd breadcrumbs={breadcrumbs} />
       <div className={style.content}>
         <Breadcrumbs data={breadcrumbs} />
         <div className={style.box}>

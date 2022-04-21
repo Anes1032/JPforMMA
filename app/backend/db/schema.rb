@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_18_105011) do
+ActiveRecord::Schema.define(version: 2022_04_20_142440) do
 
   create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2022_04_18_105011) do
     t.string "created_by_address"
     t.string "post_time"
     t.string "reference_url"
+    t.string "source", default: "MMA Mania"
     t.integer "category_id", default: 1
     t.integer "status_id", default: 2
     t.boolean "hero"

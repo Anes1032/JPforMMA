@@ -1,4 +1,5 @@
 import Api from "~/lib/api";
+import { buildCanonical } from "~/lib/util";
 import Layout from "~/components/molecules/Layout";
 import Hero from "~/components/organisms/index/Hero";
 import New from "~/components/organisms/index/New";
@@ -9,8 +10,13 @@ import Tags from "~/components/atoms/Tags";
 import style from "~/pages/index.module.scss";
 
 const Index = ({ data }) => {
+  const title =
+    "JP PORTAL for UFC｜本場のUFCの情報・ニュースをお届けするメディア";
+  const description =
+    "日本語では読むことのできない本場のUFC情報をお届けします。日本人選手や有名スター選手の情報だけでなく、全ての情報を取り入れたい格闘技マニアのためのサイトです。";
+  const canonical = buildCanonical();
   return (
-    <Layout>
+    <Layout title={title} description={description} canonical={canonical}>
       <Hero data={data.hero} />
       <div className={style.content}>
         <div className={style.box}>

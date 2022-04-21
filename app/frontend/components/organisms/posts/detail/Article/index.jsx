@@ -24,7 +24,6 @@ const Article = ({ data }) => {
       </a>
     ));
   };
-  console.log(data);
   return (
     <div className={style.container}>
       <div className={style.head}>
@@ -41,7 +40,7 @@ const Article = ({ data }) => {
           height={405}
         />
         <Infos date={data.post_time} />
-        <Source url={data.reference_url} />
+        <Source url={data.reference_url} name={data.source} />
         <div
           className={style.content}
           dangerouslySetInnerHTML={{ __html: data.en_content }}
