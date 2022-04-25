@@ -4,11 +4,14 @@ import Api from "~/lib/api";
 
 // credentials の情報から、ログイン可能か判定してユーザー情報を返す関数
 const findUserByCredentials = async (credentials) => {
-  const apiParams = {
-    email: credentials.email,
-    password: credentials.password,
+  const options = {
+    key: "user_login",
+    params: {
+      email: credentials.email,
+      password: credentials.password,
+    },
   };
-  const data = await new Api("user_login", apiParams).getData();
+  const data = await new Api(options).getData();
   if (data.status === "SUCCESS") {
     // ログイン可ならユーザー情報を返却
     return data.data;
@@ -30,7 +33,7 @@ const options = {
         if (user) {
           return Promise.resolve(user);
         } else {
-          return Promise.resolve(credentials.email);
+          return Promise.resolve(null);
         }
       },
     }),
@@ -44,6 +47,7 @@ const options = {
       return url;
     },
   },
+  secret: "secret",
 };
 
 export default (req, res) => NextAuth(req, res, options);

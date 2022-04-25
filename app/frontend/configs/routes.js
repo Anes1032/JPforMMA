@@ -27,4 +27,8 @@ export default {
     endpoint: "/users",
     action: "post",
   },
+  post_update: {
+    endpoint: "/posts",
+    action: "patch",
+  },
 };

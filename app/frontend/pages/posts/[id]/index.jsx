@@ -41,7 +41,7 @@ const Post = ({ data }) => {
           <div className={style.sidebar}>
             <Ranking data={data.rankings} />
             <BackLinks />
-            <Tags name={"関連するキーワード"} data={data.tags} slug={"tags"} />
+            <Tags name={"関連するキーワード"} data={data.tags} slug={"tag"} />
           </div>
         </div>
       </div>
@@ -51,10 +51,11 @@ const Post = ({ data }) => {
 
 export const getServerSideProps = async ({ params }) => {
   const id = params?.id;
-  const apiParams = {
+  const options = {
+    key: "post",
     id,
   };
-  const data = await new Api("post", apiParams).getData();
+  const data = await new Api(options).getData();
   return {
     props: {
       data: data.data,

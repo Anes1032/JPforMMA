@@ -7,16 +7,29 @@
   justify-content: center;
   padding: 100px 0;
   min-height: calc(100vh - 100px);
+
+  @include screenMd {
+    min-height: calc(100vh - convertWithToVw(50));
+    padding: convertWithToVw(100) convertWithToVw(16);
+  }
 }
 
 .content {
   width: $main-box-width;
+
+  @include screenMd {
+    width: 100%;
+  }
 
   .title {
     font-size: 40px;
     font-weight: bold;
     color: $red;
     text-align: center;
+
+    @include screenMd {
+      font-size: convertWithToVw(30);
+    }
   }
 
   .text {
@@ -25,12 +38,21 @@
     text-align: center;
     font-size: 20px;
     font-weight: bold;
+
+    @include screenMd {
+      margin-top: convertWithToVw(30);
+      font-size: convertWithToVw(20);
+    }
   }
 
   .btn {
     display: block;
     margin-top: 50px;
     text-align: center;
+
+    @include screenMd {
+      margin-top: convertWithToVw(50);
+    }
 
     .text {
       display: inline-block;
@@ -42,6 +64,10 @@
       font-weight: bold;
       font-size: 16px;
       border-radius: 4px;
+
+      @include screenMd {
+        width: 100%;
+      }
     }
   }
 }

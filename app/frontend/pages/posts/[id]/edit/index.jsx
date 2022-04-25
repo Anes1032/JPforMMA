@@ -1,23 +1,57 @@
 import Api from "~/lib/api";
+import { useState } from "react";
+import Router from "next/router";
 import { getSession } from "next-auth/react";
 import { buildCanonical } from "~/lib/util";
 import Layout from "~/components/molecules/Layout";
 import style from "~/pages/posts/[id]/edit/index.module.scss";
 
 const Edit = ({ data }) => {
-  const breadcrumbs = [
+  const items = [
     {
-      url: "/posts/",
-      name: "記事一覧",
+      name: "タイトル",
+      key: "title",
     },
     {
-      url: `/posts/${data.post.id}`,
-      name: data.post.en_title,
+      name: "サブタイトル",
+      key: "sub_title",
+    },
+    {
+      name: "本文",
+      key: "content",
     },
   ];
+  const initalTextareaContent = {
+    title: data.post.ja_title,
+    sub_title: data.post.sub_title,
+    content: data.post.ja_content,
+  };
+  const [textareaContent, setTextareaContent] = useState(initalTextareaContent);
+  const updateTextareaContent = (key, value) => {
+    const copiedTextareaContent = { ...textareaContent };
+    copiedTextareaContent[key] = value + "\u200b";
+    setTextareaContent(copiedTextareaContent);
+  };
+  const updateData = async () => {
+    const nextStatusId =
+      data.post.status_id === 2 || data.post.status_id === 3 ? 2 : 1;
+    const options = {
+      key: "post_update",
+      id: data.post.id,
+      params: {
+        ja_title: textareaContent.title,
+        ja_sub_title: textareaContent.sub_title,
+        ja_content: textareaContent.content,
+        status_id: nextStatusId,
+      },
+    };
+    const result = await new Api(options).patchData();
+    alert(result.message);
+    Router.push(`/posts/${data.post.id}`);
+  };
   const title = `${data.post.en_title}｜JAPAN PORTAL for UFC`;
   const description = data.post.en_sub_title;
-  const canonical = buildCanonical("posts", data.post.id);
+  const canonical = buildCanonical("posts", data.post.id, "edit");
   const ogp = data.post.image_url;
   const robots = "noindex, nofollow";
   return (
@@ -29,20 +63,35 @@ const Edit = ({ data }) => {
       robots={robots}
     >
       <div className={style.content}>
-        <div className={style.box}>
-          <p className={style.title}>タイトル</p>
-          <div className={style.inner}>
-            <div className={style.original}>
-              <p>{data.post.en_title}</p>
-            </div>
-            <div className={style.textarea}>
-              <textarea
-                className={style.textarea_main}
-                defaultValue={data.post.ja_title}
-              />
-              <div className={style.textarea_dummy} aria-hidden="true"></div>
+        {items.map((item) => (
+          <div className={style.box} key={item.key}>
+            <p className={style.title}>{item.name}</p>
+            <div className={style.inner}>
+              <div
+                className={style.original}
+                dangerouslySetInnerHTML={{
+                  __html: data.post[`en_${item.key}`],
+                }}
+              ></div>
+              <div className={style.textarea}>
+                <textarea
+                  className={style.textarea_main}
+                  defaultValue={data.post[`ja_${item.key}`]}
+                  onInput={(e) =>
+                    updateTextareaContent(item.key, e.target.value)
+                  }
+                />
+                <div className={style.textarea_dummy} aria-hidden="true">
+                  {textareaContent[item.key]}
+                </div>
+              </div>
             </div>
           </div>
+        ))}
+        <div className={style.btn}>
+          <button className={style.text} onClick={updateData}>
+            更新
+          </button>
         </div>
       </div>
     </Layout>
@@ -60,10 +109,11 @@ export const getServerSideProps = async (context) => {
     };
   }
   const id = context.params?.id;
-  const apiParams = {
+  const options = {
+    key: "post",
     id,
   };
-  const data = await new Api("post", apiParams).getData();
+  const data = await new Api(options).getData();
   return {
     props: {
       data: data.data,

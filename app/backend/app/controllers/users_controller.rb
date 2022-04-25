@@ -21,6 +21,9 @@ class UsersController < ApplicationController
   end
 
   def create
+    if !params[:email] && !params[:password]
+      return render json: { status: 'ERROR', message: 'メールアドレスとパスワードは必須です' }
+    end
     existance = User.find_by(email: params[:email])
     if existance
       return render json: { status: 'ERROR', message: '登録済みのメールアドレスです' }

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Infos from "~/components/atoms/Infos";
 import Source from "~/components/atoms/Source";
 import style from "~/components/organisms/posts/detail/Article/index.module.scss";
@@ -26,7 +27,7 @@ const Article = ({ data }) => {
         key={i}
         rel="noopener, noreferrer"
       >
-        <img src={`/images/${item.name}${n}.svg`} alt={"twitter"} />
+        <img src={`/images/${item.name}${n}.svg`} alt={item.name} />
       </a>
     ));
   };
@@ -61,6 +62,17 @@ const Article = ({ data }) => {
         )}
       </div>
       <div className={style.bottom}>
+        <Link href={`/posts/${data.id}/edit`}>
+          <a className={style.edit}>
+            <img
+              src={"/images/pencil.svg"}
+              alt={"鉛筆"}
+              width={25}
+              height={25}
+            />
+            記事を編集する
+          </a>
+        </Link>
         <div className={style.sns}>{icons(2)}</div>
       </div>
     </div>

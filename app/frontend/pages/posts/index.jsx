@@ -4,7 +4,7 @@ import Layout from "~/components/molecules/Layout";
 import Breadcrumbs from "~/components/molecules/Breadcrumbs";
 import Ranking from "~/components/atoms/Ranking";
 import Tags from "~/components/atoms/Tags";
-import Posts from "~/components/organisms/posts/archive/Posts";
+import Articles from "~/components/organisms/posts/archive/Articles";
 import BreadcrumbsJsonLd from "~/components/JsonLd/Breadcrumbs";
 import style from "~/pages/posts/index.module.scss";
 
@@ -23,18 +23,18 @@ const Posts = ({ data }) => {
       <div className={style.content}>
         <Breadcrumbs data={breadcrumbs} />
         <div className={style.box}>
-          <Posts
+          <Articles
             data={data.posts}
             pagenations={data.pagenations}
             name={"記事一覧"}
           />
           <div className={style.sidebar}>
             <Ranking data={data.rankings} />
-            <Tags name={"急上昇ワード"} data={data.tags} slug={"tags"} />
+            <Tags name={"急上昇ワード"} data={data.tags} slug={"tag"} />
             <Tags
               name={"人気UFCファイター"}
               data={data.fighters}
-              slug={"fighters"}
+              slug={"fighter"}
             />
           </div>
         </div>
@@ -45,10 +45,13 @@ const Posts = ({ data }) => {
 
 export const getServerSideProps = async ({ query }) => {
   const page = query.page ? query.page : 1;
-  const apiParams = {
-    page,
+  const options = {
+    key: "posts",
+    params: {
+      page,
+    },
   };
-  const data = await new Api("posts", apiParams).getData();
+  const data = await new Api(options).getData();
 
   return {
     props: {

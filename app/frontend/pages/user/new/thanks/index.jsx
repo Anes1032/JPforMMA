@@ -10,7 +10,11 @@ const Thanks = () => {
     <Layout title={title} canonical={canonical}>
       <div className={style.container}>
         <div className={style.content}>
-          <h1 className={style.title}>会員登録ありがとうございます</h1>
+          <h1 className={style.title}>
+            会員登録
+            <br className="spOnly" />
+            ありがとうございます
+          </h1>
           <p className={style.text}>下記よりログイン完了してください</p>
           <Link href={"/user/login"}>
             <a className={style.btn}>

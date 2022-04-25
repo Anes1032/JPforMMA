@@ -7,22 +7,54 @@
   background-color: $white;
   padding: 30px 30px 50px;
   color: $black;
+
+  @include screenMd {
+    margin: convertWithToVw(30) convertWithToVw(16) convertWithToVw(100);
+  }
+}
+
+.box {
+  &:nth-child(n + 2) {
+    margin-top: 30px;
+
+    @include screenMd {
+      margin-top: convertWithToVw(20);
+    }
+  }
 }
 
 .title {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: bold;
+
+  @include screenMd {
+    margin-top: convertWithToVw(18);
+  }
 }
 
 .inner {
   margin-top: 20px;
   display: flex;
+
+  @include screenMd {
+    display: block;
+    margin-top: convertWithToVw(15);
+  }
 }
 
 .original {
   width: 50%;
   padding: 6px 15px 0 0;
   border-right: 1px solid $black;
+  font-size: 16px;
+  line-height: 1.5;
+
+  @include screenMd {
+    width: 100%;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+  }
 }
 
 .textarea {
@@ -31,6 +63,12 @@
   font-size: 16px;
   line-height: 1.8;
   margin: 0 0 0 15px;
+
+  @include screenMd {
+    margin: convertWithToVw(10) 0 0;
+    width: 100%;
+    font-size: 14px;
+  }
 }
 
 .textarea_dummy {
@@ -67,4 +105,28 @@
 .textarea__textarea:focus {
   box-shadow: 0 0 0 4px rgba(35, 167, 195, 0.3);
   outline: 0;
+}
+
+.btn {
+  display: block;
+  margin-top: 50px;
+  text-align: center;
+
+  .text {
+    display: inline-block;
+    text-align: center;
+    color: $white;
+    background-color: $red;
+    line-height: 48px;
+    width: 360px;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 4px;
+
+    @include screenMd {
+      width: 100%;
+      font-size: convertWithToVw(16);
+      line-height: convertWithToVw(40);
+    }
+  }
 }

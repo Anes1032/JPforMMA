@@ -25,11 +25,11 @@ const Index = ({ data }) => {
         <div className={style.box}>
           <Recommend data={data.recommend} />
           <div>
-            <Tags name={"急上昇ワード"} data={data.tags} slug={"tags"} />
+            <Tags name={"急上昇ワード"} data={data.tags} slug={"tag"} />
             <Tags
               name={"人気UFCファイター"}
               data={data.fighters}
-              slug={"fighters"}
+              slug={"fighter"}
             />
           </div>
         </div>
@@ -39,7 +39,10 @@ const Index = ({ data }) => {
 };
 
 export const getServerSideProps = async () => {
-  const data = await new Api("top").getData();
+  const options = {
+    key: "top",
+  };
+  const data = await new Api(options).getData();
 
   return {
     props: {

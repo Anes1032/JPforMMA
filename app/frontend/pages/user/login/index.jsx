@@ -6,6 +6,18 @@ import Layout from "~/components/molecules/Layout";
 import style from "~/pages/user/login/index.module.scss";
 
 const Login = ({ csrfToken }) => {
+  const items = [
+    {
+      name: "メールアドレス",
+      key: "email",
+      type: "email",
+    },
+    {
+      name: "パスワード",
+      key: "password",
+      type: "password",
+    },
+  ];
   const { error } = useRouter().query;
 
   const title = "ログイン｜JP PORTAL for UFC";
@@ -26,18 +38,18 @@ const Login = ({ csrfToken }) => {
               type={"hidden"}
               defaultValue={csrfToken}
             />
-            <div className={style.block}>
-              <label className={style.label}>メールアドレス</label>
-              <input className={style.input} name={"email"} />
-            </div>
-            <div className={style.block}>
-              <label className={style.label}>パスワード</label>
-              <input
-                className={style.input}
-                name={"password"}
-                type={"password"}
-              />
-            </div>
+            {items.map((item) => (
+              <div key={item.key} className={style.block}>
+                <div className={style.inner}>
+                  <label className={style.label}>{item.name}</label>
+                  <input
+                    className={style.input}
+                    name={item.key}
+                    type={item.type}
+                  />
+                </div>
+              </div>
+            ))}
             <div className={style.btn}>
               <button className={style.text} type="submit">
                 ログイン
@@ -45,7 +57,7 @@ const Login = ({ csrfToken }) => {
             </div>
             {error && (
               <p className={style.error_message}>
-                ログインメールアドレス又はパスワードが間違っています。
+                メールアドレス又はパスワードが間違っています。
               </p>
             )}
             <Link href={"/user/new"}>
