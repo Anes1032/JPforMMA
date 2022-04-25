@@ -12,11 +12,9 @@ import style from "~/pages/index.module.scss";
 const Index = ({ data }) => {
   const title =
     "JP PORTAL for UFC｜本場のUFCの情報・ニュースをお届けするメディア";
-  const description =
-    "日本語では読むことのできない本場のUFC情報をお届けします。日本人選手や有名スター選手の情報だけでなく、全ての情報を取り入れたい格闘技マニアのためのサイトです。";
   const canonical = buildCanonical();
   return (
-    <Layout title={title} description={description} canonical={canonical}>
+    <Layout title={title} canonical={canonical}>
       <Hero data={data.hero} />
       <div className={style.content}>
         <div className={style.box}>
@@ -27,11 +25,11 @@ const Index = ({ data }) => {
         <div className={style.box}>
           <Recommend data={data.recommend} />
           <div>
-            <Tags name={"急上昇ワード"} data={data.tags} slug={"tags"} />
+            <Tags name={"急上昇ワード"} data={data.tags} slug={"tag"} />
             <Tags
               name={"人気UFCファイター"}
               data={data.fighters}
-              slug={"fighters"}
+              slug={"fighter"}
             />
           </div>
         </div>
@@ -41,10 +39,15 @@ const Index = ({ data }) => {
 };
 
 export const getServerSideProps = async () => {
-  const data = new Api("top").getData();
+  const options = {
+    key: "top",
+  };
+  const data = await new Api(options).getData();
 
   return {
-    props: data,
+    props: {
+      data: data.data,
+    },
   };
 };
 

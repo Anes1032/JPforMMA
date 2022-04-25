@@ -1,14 +1,23 @@
 @import "~/styles/settings.scss";
 @import "~/styles/utils.scss";
 
-.container {
+.main {
   background-color: $red;
+
+  @include screenMd {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
 }
 
 .inner {
   min-width: $content-max-width;
   padding: 10px 70px;
   display: flex;
+  align-items: center;
 
   @include screenMd {
     min-width: unset;
@@ -20,5 +29,120 @@
   @include screenMd {
     width: convertWithToVw(147);
     height: auto;
+  }
+}
+
+.btns {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+
+  .btn {
+    line-height: 33px;
+    font-size: 18px;
+    border-radius: 4px;
+    border: 2px solid $white;
+    font-weight: bold;
+    width: 120px;
+    text-align: center;
+
+    &.signIn,
+    &.signOut {
+      margin-left: 10px;
+      color: $white;
+    }
+
+    &.create {
+      background-color: #ffffff;
+      color: $red;
+    }
+  }
+}
+
+.hamburger {
+  margin-left: auto;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+  position: relative;
+  width: 20px;
+
+  @include screenMd {
+    display: flex;
+  }
+
+  .line {
+    width: 20px;
+    height: 2px;
+    background-color: #ffffff;
+    position: absolute;
+    left: 0;
+    transition: 0.3s;
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      top: 9px;
+    }
+
+    &:nth-child(3) {
+      top: 18px;
+    }
+
+    &.open {
+      top: 9px;
+      transform: rotate(45deg);
+      transition: 0.3s;
+
+      &:nth-child(2) {
+        display: none;
+      }
+
+      &:nth-child(3) {
+        top: 9px;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+.menu {
+  position: fixed;
+  top: convertWithToVw(50);
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: convertWithToVw(30) convertWithToVw(16);
+  background-color: #000000ce;
+  z-index: 2;
+
+  .btn {
+    width: 100%;
+    text-align: center;
+    display: block;
+    line-height: convertWithToVw(35);
+    font-size: convertWithToVw(20);
+    border-radius: 4px;
+    font-weight: bold;
+
+    &.create {
+      background-color: $red;
+      border: 2px solid $red;
+      color: $white;
+    }
+
+    &.signIn,
+    &.signOut {
+      background-color: $black;
+      border: 2px solid $white;
+      color: $white;
+    }
+
+    &:nth-child(n + 2) {
+      margin-top: convertWithToVw(20);
+    }
   }
 }

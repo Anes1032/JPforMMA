@@ -6,7 +6,7 @@ import OrganizationJsonLd from "~/components/JsonLd/Organization";
 const Layout = ({
   children,
   title,
-  description,
+  description = "日本語では読むことのできない本場のUFC情報をお届けします。日本人選手や有名スター選手の情報だけでなく、全ての情報を取り入れたい格闘技マニアのためのサイトです。",
   canonical,
   ogp = "https://mma.jp-portal.com/images/og-image.png",
 }) => {

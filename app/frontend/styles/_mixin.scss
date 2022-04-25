@@ -5,7 +5,7 @@
   text-align: left;
 
   .text {
-    position: inline-block;
+    display: inline-block;
     font-size: 40px;
     font-weight: bold;
     letter-spacing: 2px;
@@ -32,6 +32,108 @@
       @include screenMd {
         display: none;
       }
+    }
+  }
+}
+
+@mixin form_style() {
+  margin-top: 60px;
+
+  @include screenMd {
+    margin-top: convertWithToVw(30);
+  }
+
+  .block {
+    &:nth-of-type(n + 2) {
+      margin-top: 30px;
+
+      @include screenMd {
+        margin-top: convertWithToVw(30);
+      }
+    }
+  }
+
+  .inner {
+    display: flex;
+    align-items: center;
+
+    @include screenMd {
+      display: block;
+    }
+  }
+
+  .label {
+    width: 120px;
+    font-size: 16px;
+    color: $black;
+    font-weight: bold;
+
+    @include screenMd {
+      width: 100%;
+    }
+  }
+
+  .input {
+    font-size: 16px;
+    padding: 0 10px;
+    width: 360px;
+    height: 48px;
+    border: 1px solid #e4e4e4;
+
+    @include screenMd {
+      width: 100%;
+      margin-top: convertWithToVw(15);
+    }
+
+    &.error {
+      border: 1px solid $red;
+      background-color: $pink;
+    }
+  }
+
+  .btn {
+    margin-top: 50px;
+    text-align: center;
+
+    @include screenMd {
+      margin-top: convertWithToVw(30);
+    }
+
+    .text {
+      text-align: center;
+      color: $white;
+      background-color: $red;
+      line-height: 48px;
+      width: 360px;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 4px;
+
+      @include screenMd {
+        width: 100%;
+      }
+    }
+  }
+
+  .error_message,
+  .error_text {
+    font-size: 16px;
+    text-align: center;
+    color: $red;
+    margin-top: 10px;
+
+    @include screenMd {
+      font-size: 14px;
+      margin-top: convertWithToVw(10);
+    }
+  }
+
+  .error_text {
+    margin-left: 120px;
+    text-align: left;
+
+    @include screenMd {
+      margin-left: 0;
     }
   }
 }

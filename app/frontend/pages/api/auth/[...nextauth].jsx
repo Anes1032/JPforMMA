@@ -1,16 +1,20 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import Api from "~/lib/api";
 
 // credentials の情報から、ログイン可能か判定してユーザー情報を返す関数
-const findUserByCredentials = (credentials) => {
-  // 今回は簡易的な例なのでメールアドレスとパスワードが一致する場合にユーザー情報を返却する。
-  // データベースでユーザーを管理している場合は、データベースからユーザーを取得して、パスワードハッシュを比較して判定するのがよいかと。
-  if (
-    credentials.email === process.env.NEXT_PUBLIC_LOGIN_ID &&
-    credentials.password === process.env.NEXT_PUBLIC_PASSWORD
-  ) {
+const findUserByCredentials = async (credentials) => {
+  const options = {
+    key: "user_login",
+    params: {
+      email: credentials.email,
+      password: credentials.password,
+    },
+  };
+  const data = await new Api(options).getData();
+  if (data.status === "SUCCESS") {
     // ログイン可ならユーザー情報を返却
-    return { id: 1, name: "Taro" };
+    return data.data;
   } else {
     // ログイン不可の場合は null を返却
     return null;
@@ -22,35 +26,28 @@ const options = {
   // 認証プロバイダー
   providers: [
     CredentialsProvider({
-      // 表示名 ('Sign in with ...' に表示される)
-      name: "Email",
-      // credentials は、ログインページで適切なフォームを生成するために使用されます。
-      // 送信するフィールドを指定できます。（今回は メールアドレス と パスワード）
-      credentials: {
-        email: {
-          label: "Email",
-          type: "email",
-          placeholder: "email@example.com",
-        },
-        password: { label: "Password", type: "password" },
-      },
       // 認証の関数
       authorize: async (credentials) => {
-        const user = findUserByCredentials(credentials);
+        const user = await findUserByCredentials(credentials);
+
         if (user) {
-          // 返されたオブジェクトはすべてJWTの`user`プロパティに保存される
           return Promise.resolve(user);
         } else {
-          // nullまたはfalseを返すと、認証を拒否する
-          // return Promise.resolve(null)
-
-          // ErrorオブジェクトやリダイレクトURLを指定してコールバックをリジェクトすることもできます。
-          // return Promise.reject(new Error('error message')) // エラーページにリダイレクト
-          return Promise.reject("/"); // URL にリダイレクト
+          return Promise.resolve(null);
         }
       },
     }),
   ],
+  pages: {
+    signIn: "/user/login",
+    error: "/user/login",
+  },
+  callbacks: {
+    async redirect({ url }) {
+      return url;
+    },
+  },
+  secret: "secret",
 };
 
 export default (req, res) => NextAuth(req, res, options);

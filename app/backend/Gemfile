@@ -67,3 +67,5 @@ gem 'cancancan'
 gem 'dotenv-rails'
 
 gem 'kaminari'
+
+gem 'rack-cors'

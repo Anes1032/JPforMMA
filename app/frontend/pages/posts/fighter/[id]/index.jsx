@@ -4,39 +4,37 @@ import Layout from "~/components/molecules/Layout";
 import Breadcrumbs from "~/components/molecules/Breadcrumbs";
 import Ranking from "~/components/atoms/Ranking";
 import Tags from "~/components/atoms/Tags";
-import Posts from "~/components/organisms/posts/archive/Posts";
+import Articles from "~/components/organisms/posts/archive/Articles";
 import BreadcrumbsJsonLd from "~/components/JsonLd/Breadcrumbs";
 import style from "~/pages/posts/index.module.scss";
 
-const Index = ({ data }) => {
+const Fighter = ({ data }) => {
   const breadcrumbs = [
     {
       url: "/posts/",
-      name: `${data.tag.name}`,
+      name: `${data.fighter.name}`,
     },
   ];
-  const title = `${data.tag.name}に関する記事一覧｜JAPAN PORTAL for UFC`;
-  const description =
-    "日本語では読むことのできない本場のUFC情報をお届けします。日本人選手や有名スター選手の情報だけでなく、全ての情報を取り入れたい格闘技マニアのためのサイトです。";
-  const canonical = buildCanonical("tags", data.tag.id);
+  const title = `${data.fighter.name}に関する記事一覧｜JAPAN PORTAL for UFC`;
+  const canonical = buildCanonical("tags", data.fighters.id);
   return (
-    <Layout title={title} description={description} canonical={canonical}>
+    <Layout title={title} canonical={canonical}>
       <BreadcrumbsJsonLd breadcrumbs={breadcrumbs} />
       <div className={style.content}>
         <Breadcrumbs data={breadcrumbs} />
         <div className={style.box}>
-          <Posts
+          <Articles
             data={data.posts}
             pagenations={data.pagenations}
-            name={`"${data.tag.name}"`}
+            name={`"${data.fighter.name}"`}
           />
           <div className={style.sidebar}>
             <Ranking data={data.rankings} />
-            <Tags name={"急上昇ワード"} data={data.tags} slug={"tags"} />
+            <Tags name={"急上昇ワード"} data={data.tags} slug={"tag"} />
             <Tags
               name={"人気UFCファイター"}
               data={data.fighters}
-              slug={"fighters"}
+              slug={"fighter"}
             />
           </div>
         </div>
@@ -48,11 +46,20 @@ const Index = ({ data }) => {
 export const getServerSideProps = async ({ params, query }) => {
   const id = params?.id;
   const page = query.page ? query.page : 1;
-  const data = new Api("tags", `/${id}?page=${page}`).getData();
+  const options = {
+    key: "fighters",
+    id,
+    params: {
+      page,
+    },
+  };
+  const data = await new Api(options).getData();
 
   return {
-    props: data,
+    props: {
+      data: data.data,
+    },
   };
 };
 
-export default Index;
+export default Fighter;

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { omittedText } from "~/lib/util";
 import Infos from "~/components/atoms/Infos";
 import Pagenation from "~/components/organisms/posts/archive/Pagination";
-import style from "~/components/organisms/posts/archive/Posts/index.module.scss";
+import style from "~/components/organisms/posts/archive/Articles/index.module.scss";
 
 const Posts = ({ data, pagenations, name }) => {
   return (

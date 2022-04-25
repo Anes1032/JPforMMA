@@ -1,0 +1,39 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+@import "~/styles/mixin.scss";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+  min-height: calc(100vh - 100px);
+
+  @include screenMd {
+    min-height: calc(100vh - convertWithToVw(50));
+    padding: convertWithToVw(30) convertWithToVw(16);
+  }
+}
+
+.content {
+  width: $main-box-width;
+
+  @include screenMd {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 40px;
+    font-weight: bold;
+    color: $red;
+    text-align: center;
+
+    @include screenMd {
+      font-size: convertWithToVw(30);
+    }
+  }
+
+  .form {
+    @include form_style();
+  }
+}

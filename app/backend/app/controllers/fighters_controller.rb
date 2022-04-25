@@ -1,5 +1,5 @@
 class FightersController < ApplicationController
-  before_action :set_post, only: [:show]
+  before_action :set_fighter, only: [:show]
   skip_before_action :verify_authenticity_token
 
   def index
@@ -36,11 +36,11 @@ class FightersController < ApplicationController
 
   private
 
-  def set_post
+  def set_fighter
     @fighter = Fighter.find(params[:id])
   end
 
-  def post_params
+  def fighter_params
     params.require(:fighter).permit(:en_title)
   end
 end

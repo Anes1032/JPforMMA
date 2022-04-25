@@ -62,22 +62,22 @@ class PostsController < ApplicationController
   def create
     post = Post.new(post_params)
     if post.save
-      render json: { status: 'SUCCESS', data: post }
+      render json: { status: 'SUCCESS', message: "記事を作成しました", data: post }
     else
-      render json: { status: 'ERROR', data: post.errors }
+      render json: { status: 'ERROR', message: "記事の作成に失敗しました", data: post.errors }
     end
   end
 
   def destroy
     @post.destroy
-    render json: { status: 'SUCCESS', message: 'Deleted the post', data: @post }
+    render json: { status: 'SUCCESS', message: '記事の削除を完了しました', data: @post }
   end
 
   def update
     if @post.update(post_params)
-      render json: { status: 'SUCCESS', message: 'Updated the post', data: @post }
+      render json: { status: 'SUCCESS', message: '記事を更新しました', data: @post }
     else
-      render json: { status: 'SUCCESS', message: 'Not updated', data: @post.errors }
+      render json: { status: 'SUCCESS', message: '記事の更新に失敗しました', data: @post.errors }
     end
   end
 
@@ -88,6 +88,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:en_title)
+    params.require(:post).permit(:ja_title, :ja_sub_title, :ja_content, :status_id)
   end
 end

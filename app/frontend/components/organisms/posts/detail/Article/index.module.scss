@@ -136,9 +136,38 @@
     margin-top: convertWithToVw(20);
   }
 
+  .edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px $grey;
+    line-height: 40px;
+    font-size: 20px;
+    color: $grey;
+
+    @include screenMd {
+      font-size: convertWithToVw(14);
+      line-height: convertWithToVw(30);
+    }
+
+    img {
+      margin-right: 10px;
+
+      @include screenMd {
+        width: convertWithToVw(20);
+        height: convertWithToVw(20);
+      }
+    }
+  }
+
   .sns {
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
+
+    @include screenMd {
+      margin-top: convertWithToVw(20);
+    }
 
     .icon {
       @include screenMd {
