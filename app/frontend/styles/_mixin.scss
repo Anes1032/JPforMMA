@@ -5,7 +5,7 @@
   text-align: left;
 
   .text {
-    position: inline-block;
+    display: inline-block;
     font-size: 40px;
     font-weight: bold;
     letter-spacing: 2px;
@@ -33,5 +33,67 @@
         display: none;
       }
     }
+  }
+}
+
+@mixin form_style() {
+  margin-top: 60px;
+
+  .block {
+    display: flex;
+    align-items: center;
+
+    &:nth-of-type(n + 2) {
+      margin-top: 30px;
+    }
+  }
+
+  .label {
+    width: 120px;
+    font-size: 16px;
+    color: $black;
+    font-weight: bold;
+  }
+
+  .input {
+    font-size: 16px;
+    padding: 0 10px;
+    width: 360px;
+    height: 48px;
+    border: 1px solid #e4e4e4;
+
+    &.error {
+      border: 1px solid $red;
+      background-color: $pink;
+    }
+  }
+
+  .btn {
+    margin-top: 50px;
+    text-align: center;
+
+    .text {
+      text-align: center;
+      color: $white;
+      background-color: $red;
+      line-height: 48px;
+      width: 360px;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+  }
+
+  .error_message,
+  .error_text {
+    font-size: 16px;
+    text-align: center;
+    color: $red;
+    margin-top: 10px;
+  }
+
+  .error_text {
+    margin-left: 120px;
+    text-align: left;
   }
 }

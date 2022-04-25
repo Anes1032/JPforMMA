@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_action :set_post, only: [:show]
+  before_action :set_tag, only: [:show]
   skip_before_action :verify_authenticity_token
 
   def index
@@ -36,11 +36,11 @@ class TagsController < ApplicationController
 
   private
 
-  def set_post
+  def set_tag
     @tag = Tag.find(params[:id])
   end
 
-  def post_params
+  def tag_params
     params.require(:tag).permit(:en_title)
   end
 end

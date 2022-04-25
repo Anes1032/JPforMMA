@@ -12,11 +12,9 @@ import style from "~/pages/index.module.scss";
 const Index = ({ data }) => {
   const title =
     "JP PORTAL for UFC｜本場のUFCの情報・ニュースをお届けするメディア";
-  const description =
-    "日本語では読むことのできない本場のUFC情報をお届けします。日本人選手や有名スター選手の情報だけでなく、全ての情報を取り入れたい格闘技マニアのためのサイトです。";
   const canonical = buildCanonical();
   return (
-    <Layout title={title} description={description} canonical={canonical}>
+    <Layout title={title} canonical={canonical}>
       <Hero data={data.hero} />
       <div className={style.content}>
         <div className={style.box}>
@@ -41,10 +39,12 @@ const Index = ({ data }) => {
 };
 
 export const getServerSideProps = async () => {
-  const data = new Api("top").getData();
+  const data = await new Api("top").getData();
 
   return {
-    props: data,
+    props: {
+      data: data.data,
+    },
   };
 };
 

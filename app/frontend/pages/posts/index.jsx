@@ -8,7 +8,7 @@ import Posts from "~/components/organisms/posts/archive/Posts";
 import BreadcrumbsJsonLd from "~/components/JsonLd/Breadcrumbs";
 import style from "~/pages/posts/index.module.scss";
 
-const Index = ({ data }) => {
+const Posts = ({ data }) => {
   const breadcrumbs = [
     {
       url: "/posts/",
@@ -16,11 +16,9 @@ const Index = ({ data }) => {
     },
   ];
   const title = "記事一覧｜JAPAN PORTAL for UFC";
-  const description =
-    "日本語では読むことのできない本場のUFC情報をお届けします。日本人選手や有名スター選手の情報だけでなく、全ての情報を取り入れたい格闘技マニアのためのサイトです。";
   const canonical = buildCanonical("posts");
   return (
-    <Layout title={title} description={description} canonical={canonical}>
+    <Layout title={title} canonical={canonical}>
       <BreadcrumbsJsonLd breadcrumbs={breadcrumbs} />
       <div className={style.content}>
         <Breadcrumbs data={breadcrumbs} />
@@ -47,11 +45,16 @@ const Index = ({ data }) => {
 
 export const getServerSideProps = async ({ query }) => {
   const page = query.page ? query.page : 1;
-  const data = new Api("posts", `?page=${page}`).getData();
+  const apiParams = {
+    page,
+  };
+  const data = await new Api("posts", apiParams).getData();
 
   return {
-    props: data,
+    props: {
+      data: data.data,
+    },
   };
 };
 
-export default Index;
+export default Posts;

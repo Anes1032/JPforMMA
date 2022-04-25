@@ -10,7 +10,7 @@ import ArticleJsonLd from "~/components/JsonLd/Article";
 import BreadcrumbsJsonLd from "~/components/JsonLd/Breadcrumbs";
 import style from "~/pages/posts/[id]/index.module.scss";
 
-const Index = ({ data }) => {
+const Post = ({ data }) => {
   const breadcrumbs = [
     {
       url: "/posts/",
@@ -45,18 +45,21 @@ const Index = ({ data }) => {
           </div>
         </div>
       </div>
-      <p></p>
     </Layout>
   );
 };
 
 export const getServerSideProps = async ({ params }) => {
   const id = params?.id;
-  const data = new Api("post", `/${id}`).getData();
-
+  const apiParams = {
+    id,
+  };
+  const data = await new Api("post", apiParams).getData();
   return {
-    props: data,
+    props: {
+      data: data.data,
+    },
   };
 };
 
-export default Index;
+export default Post;

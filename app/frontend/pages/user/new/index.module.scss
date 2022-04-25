@@ -1,0 +1,26 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+@import "~/styles/mixin.scss";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+  min-height: calc(100vh - 100px);
+}
+
+.content {
+  width: $main-box-width;
+
+  .title {
+    font-size: 40px;
+    font-weight: bold;
+    color: $red;
+    text-align: center;
+  }
+
+  .form {
+    @include form_style();
+  }
+}

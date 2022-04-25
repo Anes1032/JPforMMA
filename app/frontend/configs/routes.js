@@ -19,4 +19,12 @@ export default {
     endpoint: "/fighters",
     action: "get",
   },
+  user_login: {
+    endpoint: "/users",
+    action: "get",
+  },
+  user_create: {
+    endpoint: "/users",
+    action: "post",
+  },
 };

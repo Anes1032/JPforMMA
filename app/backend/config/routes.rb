@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   get 'fighters', to: 'fighters#index'
   get 'fighters/:id', to: 'fighters#show'
 
+  get 'users', to: 'users#index'
+  post 'users', to: 'users#create'
+
   get '/' => redirect('/admin')
 
   get 'test', to: 'test#index'
