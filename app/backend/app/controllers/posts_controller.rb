@@ -4,10 +4,10 @@ class PostsController < ApplicationController
 
   def index
     if params[:page]
-      posts = Post.order(post_time: :desc).page(params[:page]).per(10)
+      posts = Post.page(params[:page]).per(10)
       currentPage = params[:page].to_i
     else 
-      posts = Post.order(post_time: :desc)
+      posts = Post.page(params[:page]).per(10)
       currentPage = 1
     end
     totalCount = Post.all.length
@@ -29,10 +29,10 @@ class PostsController < ApplicationController
   end
 
   def top
-    hero = Post.where(hero: true).order(post_time: :desc)
-    recommend = Post.where(recommend: true).order(post_time: :desc).limit(3)
-    pickup = Post.where(pickup: true).order(post_time: :desc).limit(3)
-    news = Post.order(post_time: :desc).limit(3)
+    hero = Post.where(hero: true)
+    recommend = Post.where(recommend: true).limit(3)
+    pickup = Post.where(pickup: true).limit(3)
+    news = Post.limit(3)
     tags = Tag.all
     fighters = Fighter.all
     rankings = Post.where.not(ranking: nil).order(ranking: :asc).limit(5)
