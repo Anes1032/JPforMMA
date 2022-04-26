@@ -53,8 +53,15 @@
     }
 
     &.create {
+      margin-left: 10px;
       background-color: #ffffff;
       color: $red;
+    }
+
+    &.private {
+      border: 2px solid $black;
+      background-color: $black;
+      color: $white;
     }
   }
 }
