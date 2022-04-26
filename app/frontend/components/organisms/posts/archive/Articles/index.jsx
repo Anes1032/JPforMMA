@@ -29,7 +29,7 @@ const Posts = ({ data, pagenations, name }) => {
                   <p className={style.description}>
                     {omittedText(item.en_sub_title, 100)}
                   </p>
-                  <Infos date={item.post_time} />
+                  <Infos status={item.status_id} date={item.post_time} />
                 </div>
               </a>
             </Link>
