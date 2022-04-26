@@ -148,6 +148,12 @@
       color: $white;
     }
 
+    &.private {
+      color: $red;
+      background-color: $white;
+      border: 2px solid $white;
+    }
+
     &:nth-child(n + 2) {
       margin-top: convertWithToVw(20);
     }

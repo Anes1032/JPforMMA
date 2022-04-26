@@ -66,6 +66,9 @@ const Header = () => {
       </div>
       {menuState && (
         <div className={style.menu}>
+          <Link href={"/posts/private"}>
+            <a className={classnames(style.private, style.btn)}>非公開記事</a>
+          </Link>
           <Link href={"/user/new"}>
             <a className={classnames(style.create, style.btn)}>会員登録</a>
           </Link>
