@@ -4,20 +4,20 @@ class PostsController < ApplicationController
 
   def index
     if params[:page]
-      posts = Post.where(status_id: 1).page(params[:page]).per(10)
+      posts = Post.where(status_id: 1).order(created_at: :desc).page(params[:page]).per(10)
       currentPage = params[:page].to_i
     else 
-      posts = Post.where(status_id: 1)
+      posts = Post.where(status_id: 1).order(created_at: :desc)
       currentPage = 1
     end
-    totalCount = Post.where(status_id: 1).all.length
+    totalCount = Post.where(status_id: 1).length
     pagenations = {
       currentPage: currentPage,
       totalCount: totalCount
     }
     tags = Tag.all
     fighters = Fighter.all
-    rankings = Post.where(status_id: 1).where.not(ranking: nil).order(ranking: :asc).limit(5)
+    rankings = Post.where.not(ranking: nil).order(ranking: :asc).limit(5)
     data = {
       posts: posts,
       pagenations: pagenations,
@@ -29,13 +29,13 @@ class PostsController < ApplicationController
   end
 
   def top
-    hero = Post.where(status_id: 1).where(hero: true)
-    recommend = Post.where(status_id: 1).where(recommend: true).limit(3)
-    pickup = Post.where(status_id: 1).where(pickup: true).limit(3)
-    news = Post.where(status_id: 1).limit(3)
+    hero = Post.where(status_id: 1).where(hero: true).order(created_at: :desc)
+    recommend = Post.where(recommend: true).order(created_at: :desc).limit(3)
+    pickup = Post.where(pickup: true).order(created_at: :desc).limit(3)
+    news = Post.order(created_at: :desc).limit(3)
     tags = Tag.all
     fighters = Fighter.all
-    rankings = Post.where(status_id: 1).where.not(ranking: nil).order(ranking: :asc).limit(5)
+    rankings = Post.where.not(ranking: nil).order(ranking: :asc).limit(5)
     data = {
       hero: hero,
       recommend: recommend,
@@ -50,20 +50,20 @@ class PostsController < ApplicationController
 
   def private
     if params[:page]
-      posts = Post.where.not(status_id: 1).page(params[:page]).per(10)
+      posts = Post.where.not(status_id: 1).order(created_at: :desc).page(params[:page]).per(10)
       currentPage = params[:page].to_i
     else 
       posts = Post.where.not(status_id: 1)
       currentPage = 1
     end
-    totalCount = Post.where.not(status_id: 1).all.length
+    totalCount = Post.where.not(status_id: 1).length
     pagenations = {
       currentPage: currentPage,
       totalCount: totalCount
     }
     tags = Tag.all
     fighters = Fighter.all
-    rankings = Post.where(status_id: 1).where.not(ranking: nil).order(ranking: :asc).limit(5)
+    rankings = Post.where.not(ranking: nil).order(ranking: :asc).limit(5)
     data = {
       posts: posts,
       pagenations: pagenations,
@@ -76,7 +76,7 @@ class PostsController < ApplicationController
 
   def show
     tags = TagRelationship.joins(:tag).select("tags.id", "tags.name").where(post_id: params[:id])
-    rankings = Post.where(status_id: 1).where.not(ranking: nil).order(ranking: :asc).limit(5)
+    rankings = Post.where.not(ranking: nil).order(ranking: :asc).limit(5)
     data = {
       post: @post,
       tags: tags,
