@@ -11,6 +11,10 @@ export default {
     endpoint: "/posts",
     action: "get",
   },
+  private: {
+    endpoint: "/posts/private",
+    action: "get",
+  },
   tags: {
     endpoint: "/tags",
     action: "get",

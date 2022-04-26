@@ -7,6 +7,7 @@ import Layout from "~/components/molecules/Layout";
 import style from "~/pages/posts/[id]/edit/index.module.scss";
 
 const Edit = ({ data }) => {
+  console.log(data);
   const items = [
     {
       name: "タイトル",
@@ -34,7 +35,7 @@ const Edit = ({ data }) => {
   };
   const updateData = async () => {
     const nextStatusId =
-      data.post.status_id === 2 || data.post.status_id === 3 ? 2 : 1;
+      data.post.status_id === 2 || data.post.status_id === 3 ? 3 : 1;
     const options = {
       key: "post_update",
       id: data.post.id,
@@ -49,6 +50,12 @@ const Edit = ({ data }) => {
     alert(result.message);
     Router.push(`/posts/${data.post.id}`);
   };
+  const statusName =
+    data.post.status_id === 1
+      ? "公開済み"
+      : data.post.status_id === 2
+      ? "非公開"
+      : "確認待ち";
   const title = `${data.post.en_title}｜JAPAN PORTAL for UFC`;
   const description = data.post.en_sub_title;
   const canonical = buildCanonical("posts", data.post.id, "edit");
@@ -63,6 +70,7 @@ const Edit = ({ data }) => {
       robots={robots}
     >
       <div className={style.content}>
+        <p className={style.status}>{statusName}</p>
         {items.map((item) => (
           <div className={style.box} key={item.key}>
             <p className={style.title}>{item.name}</p>
