@@ -10,7 +10,7 @@ class PostsController < ApplicationController
       posts = Post.where(status_id: 1).order(created_at: :desc)
       currentPage = 1
     end
-    totalCount = Post.where(status_id: 1).all.length
+    totalCount = Post.where(status_id: 1).length
     pagenations = {
       currentPage: currentPage,
       totalCount: totalCount
@@ -56,7 +56,7 @@ class PostsController < ApplicationController
       posts = Post.where.not(status_id: 1)
       currentPage = 1
     end
-    totalCount = Post.where.not(status_id: 1).all.length
+    totalCount = Post.where.not(status_id: 1).length
     pagenations = {
       currentPage: currentPage,
       totalCount: totalCount
