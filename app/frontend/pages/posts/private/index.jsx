@@ -19,6 +19,7 @@ const Private = ({ data }) => {
   const title = "非公開記事一覧｜JAPAN PORTAL for UFC";
   const canonical = buildCanonical("posts");
   const robots = "noindex, nofollow";
+  const path = "/posts/private/";
   return (
     <Layout title={title} canonical={canonical}>
       <BreadcrumbsJsonLd breadcrumbs={breadcrumbs} />
@@ -29,6 +30,7 @@ const Private = ({ data }) => {
             data={data.posts}
             pagenations={data.pagenations}
             name={"記事一覧"}
+            path={path}
           />
           <div className={style.sidebar}>
             <Ranking data={data.rankings} />
