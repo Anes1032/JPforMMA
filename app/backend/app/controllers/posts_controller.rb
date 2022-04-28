@@ -4,10 +4,10 @@ class PostsController < ApplicationController
 
   def index
     if params[:page]
-      posts = Post.where(status_id: 1).order(created_at: :desc).page(params[:page]).per(10)
+      posts = Post.where(status_id: 1).order(id: :desc).page(params[:page]).per(10)
       currentPage = params[:page].to_i
     else 
-      posts = Post.where(status_id: 1).order(created_at: :desc)
+      posts = Post.where(status_id: 1).order(id: :desc)
       currentPage = 1
     end
     totalCount = Post.where(status_id: 1).length
@@ -50,10 +50,10 @@ class PostsController < ApplicationController
 
   def private
     if params[:page]
-      posts = Post.where.not(status_id: 1).order(created_at: :desc).page(params[:page]).per(10)
+      posts = Post.where.not(status_id: 1).order(id: :desc).page(params[:page]).per(10)
       currentPage = params[:page].to_i
     else 
-      posts = Post.where.not(status_id: 1)
+      posts = Post.where.not(status_id: 1).order(id: :desc)
       currentPage = 1
     end
     totalCount = Post.where.not(status_id: 1).length
