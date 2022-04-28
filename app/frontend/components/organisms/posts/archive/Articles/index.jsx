@@ -4,7 +4,7 @@ import Infos from "~/components/atoms/Infos";
 import Pagenation from "~/components/organisms/posts/archive/Pagination";
 import style from "~/components/organisms/posts/archive/Articles/index.module.scss";
 
-const Posts = ({ data, pagenations, name }) => {
+const Posts = ({ data, pagenations, name, path }) => {
   return (
     <div className={style.container}>
       <h1 className={style.title}>
@@ -35,7 +35,7 @@ const Posts = ({ data, pagenations, name }) => {
             </Link>
           ))}
         </div>
-        <Pagenation pagenations={pagenations} />
+        <Pagenation pagenations={pagenations} path={path} />
       </div>
     </div>
   );

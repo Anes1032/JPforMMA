@@ -11,12 +11,13 @@ import style from "~/pages/posts/index.module.scss";
 const Fighter = ({ data }) => {
   const breadcrumbs = [
     {
-      url: "/posts/",
+      url: `/posts/fighter/${data.fighters.id}`,
       name: `${data.fighter.name}`,
     },
   ];
   const title = `${data.fighter.name}に関する記事一覧｜JAPAN PORTAL for UFC`;
   const canonical = buildCanonical("tags", data.fighters.id);
+  const path = `/posts/fighter/${data.fighters.id}`;
   return (
     <Layout title={title} canonical={canonical}>
       <BreadcrumbsJsonLd breadcrumbs={breadcrumbs} />
@@ -26,7 +27,8 @@ const Fighter = ({ data }) => {
           <Articles
             data={data.posts}
             pagenations={data.pagenations}
-            name={`"${data.fighter.name}"`}
+            name={data.fighter.name}
+            path={path}
           />
           <div className={style.sidebar}>
             <Ranking data={data.rankings} />

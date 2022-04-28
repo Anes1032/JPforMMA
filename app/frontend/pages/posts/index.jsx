@@ -17,6 +17,7 @@ const Posts = ({ data }) => {
   ];
   const title = "記事一覧｜JAPAN PORTAL for UFC";
   const canonical = buildCanonical("posts");
+  const path = "/posts/";
   return (
     <Layout title={title} canonical={canonical}>
       <BreadcrumbsJsonLd breadcrumbs={breadcrumbs} />
@@ -27,6 +28,7 @@ const Posts = ({ data }) => {
             data={data.posts}
             pagenations={data.pagenations}
             name={"記事一覧"}
+            path={path}
           />
           <div className={style.sidebar}>
             <Ranking data={data.rankings} />

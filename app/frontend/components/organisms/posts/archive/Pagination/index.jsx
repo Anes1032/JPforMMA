@@ -1,7 +1,7 @@
 import Link from "next/link";
 import style from "~/components/organisms/posts/archive/Pagination/index.module.scss";
 
-const Pagination = ({ pagenations }) => {
+const Pagination = ({ pagenations, path }) => {
   const currentPage = pagenations.currentPage;
   const totalPage = Math.ceil(pagenations.totalCount / 10);
   const list = Array.from({ length: totalPage }, (_, i) => i + 1);
@@ -27,7 +27,7 @@ const Pagination = ({ pagenations }) => {
     <div className={style.container}>
       <div className={style.pagination}>
         {currentPage !== 1 && (
-          <Link href={`/posts/?page=${currentPage - 1}`}>
+          <Link href={`${path}?page=${currentPage - 1}`}>
             <a className={style.prev}>&lt;</a>
           </Link>
         )}
@@ -38,14 +38,14 @@ const Pagination = ({ pagenations }) => {
                 {page}
               </span>
             ) : (
-              <Link href={`/posts/?page=${page}`} key={i}>
+              <Link href={`${path}?page=${page}`} key={i}>
                 <a className={style.able}>{page}</a>
               </Link>
             );
           return inner;
         })}
         {currentPage !== totalPage && (
-          <Link href={`/posts/?page=${currentPage - 1}`}>
+          <Link href={`${path}?page=${currentPage - 1}`}>
             <a className={style.next}>&gt;</a>
           </Link>
         )}
