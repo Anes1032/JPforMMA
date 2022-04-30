@@ -12,12 +12,12 @@ const Pickup = ({ data }) => {
             <img
               className={style.image}
               src={item.image_url}
-              alt={item.en_title}
+              alt={item.ja_title}
             />
-            <p className={style.title}>{item.en_title}</p>
+            <p className={style.title}>{item.ja_title}</p>
           </span>
           <h3 className={style.description}>
-            {omittedText(item.en_sub_title)}
+            {omittedText(item.ja_sub_title)}
           </h3>
           <Infos date={item.post_time} />
         </a>

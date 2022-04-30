@@ -18,11 +18,11 @@ const Post = ({ data }) => {
     },
     {
       url: `/posts/${data.post.id}`,
-      name: data.post.en_title,
+      name: data.post.ja_title,
     },
   ];
-  const title = `${data.post.en_title}｜JAPAN PORTAL for UFC`;
-  const description = data.post.en_sub_title;
+  const title = `${data.post.ja_title}｜JAPAN PORTAL for UFC`;
+  const description = data.post.ja_sub_title;
   const canonical = buildCanonical("posts", data.post.id);
   const ogp = data.post.image_url;
   return (

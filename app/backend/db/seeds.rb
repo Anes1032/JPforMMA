@@ -15,3 +15,4 @@ Category.create(:name => 'UFC')
 # デフォルトのステータスの追加
 Status.create(:name=> '公開')
 Status.create(:name=> '非公開')
+Status.create(:name=> '確認待ち')

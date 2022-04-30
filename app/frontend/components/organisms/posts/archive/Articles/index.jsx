@@ -18,16 +18,16 @@ const Posts = ({ data, pagenations, name, path }) => {
                 <img
                   className={style.image}
                   src={item.image_url}
-                  alt={item.en_title}
+                  alt={item.ja_title}
                   width={260}
                   height={190}
                 />
                 <div className={style.block}>
                   <h2 className={style.item_title}>
-                    {omittedText(item.en_title, 50)}
+                    {omittedText(item.ja_title, 50)}
                   </h2>
                   <p className={style.description}>
-                    {omittedText(item.en_sub_title, 100)}
+                    {omittedText(item.ja_sub_title, 100)}
                   </p>
                   <Infos status={item.status_id} date={item.post_time} />
                 </div>
