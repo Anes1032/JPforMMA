@@ -8,7 +8,7 @@ const ArticleJsonLd = ({ data }) => {
       "@type": "WebPage",
       "@id": `https://mma.jp-portal.com/posts/${data.id}/`,
     },
-    headline: data.en_title,
+    headline: data.ja_title,
     image: [data.image_url],
     datePublished: data.created_at,
     dateModified: data.updated_at,

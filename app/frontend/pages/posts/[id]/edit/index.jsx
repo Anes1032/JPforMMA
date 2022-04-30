@@ -56,8 +56,8 @@ const Edit = ({ data }) => {
       : data.post.status_id === 2
       ? "非公開"
       : "確認待ち";
-  const title = `${data.post.en_title}｜JAPAN PORTAL for UFC`;
-  const description = data.post.en_sub_title;
+  const title = `${data.post.ja_title}｜JAPAN PORTAL for UFC`;
+  const description = data.post.ja_sub_title;
   const canonical = buildCanonical("posts", data.post.id, "edit");
   const ogp = data.post.image_url;
   const robots = "noindex, nofollow";

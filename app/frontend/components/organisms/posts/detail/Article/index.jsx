@@ -37,12 +37,12 @@ const Article = ({ data }) => {
         <div className={style.sns}>{icons(1)}</div>
       </div>
       <div className={style.body}>
-        <h1 className={style.title}>{data.en_title}</h1>
-        <h2 className={style.description}>{data.en_sub_title}</h2>
+        <h1 className={style.title}>{data.ja_title}</h1>
+        <h2 className={style.description}>{data.ja_sub_title}</h2>
         <img
           className={style.image}
           src={data.image_url}
-          alt={data.en_title}
+          alt={data.ja_title}
           width={540}
           height={405}
         />
@@ -50,7 +50,7 @@ const Article = ({ data }) => {
         <Source url={data.reference_url} name={data.source} />
         <div
           className={style.content}
-          dangerouslySetInnerHTML={{ __html: data.en_content }}
+          dangerouslySetInnerHTML={{ __html: data.ja_content }}
         ></div>
         {data.video_url && (
           <iframe

@@ -20,9 +20,9 @@ const Hero = ({ data }) => {
           <img
             className={style.image}
             src={item.image_url}
-            alt={item.en_title}
+            alt={item.ja_title}
           />
-          <p className={style.title}>{item.en_title}</p>
+          <p className={style.title}>{item.ja_title}</p>
           <span className={style.infos}>
             {item.post_time && (
               <span className={style.time}>
