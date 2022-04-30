@@ -29,10 +29,10 @@ class PostsController < ApplicationController
   end
 
   def top
-    hero = Post.where(status_id: 1, hero: true).order(created_at: :desc)
-    recommend = Post.where(status_id: 1, recommend: true).order(created_at: :desc).limit(3)
-    pickup = Post.where(status_id: 1, pickup: true).order(created_at: :desc).limit(3)
-    news = Post.where(status_id: 1).order(created_at: :desc).limit(3)
+    hero = Post.where(status_id: 1, hero: true).order(post_time: :desc)
+    recommend = Post.where(status_id: 1, recommend: true).order(post_time: :desc).limit(3)
+    pickup = Post.where(status_id: 1, pickup: true).order(post_time: :desc).limit(3)
+    news = Post.where(status_id: 1).order(post_time: :desc).limit(3)
     tags = Tag.all
     fighters = Fighter.all
     rankings = Post.where(status_id: 1).where.not(ranking: nil).order(ranking: :asc).limit(5)
