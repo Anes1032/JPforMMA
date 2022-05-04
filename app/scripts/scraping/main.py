@@ -8,6 +8,38 @@ import MySQLdb
 
 import config
 
+def select_posts() :
+  # MySQLに接続
+  conn = MySQLdb.connect(
+    user=config.MYSQL_DB_USER,
+    passwd=config.MYSQL_DB_PASSWORD,
+    host=config.MYSQL_DB_HOST,
+    db=config.MYSQL_DB_NAME,
+    use_unicode=True,
+    charset="utf8"
+  )
+  # カーソルを取得する
+  cur = conn.cursor()
+
+  # SQL（データベースを操作するコマンド）を実行する
+  sql = "select reference_url from posts"
+  cur.execute(sql)
+
+  # 実行結果を取得する
+  rows = cur.fetchall()
+
+  # tupleからlistに変換
+  list = []
+  for row in rows:
+    list.append(''.join(row))
+
+  cur.close
+  conn.close
+
+  return list
+
+storage_url_list = select_posts()
+
 def get_posts() :
 
   list = []
@@ -26,25 +58,25 @@ def get_posts() :
   #   result = request.json()
   #   return result['translations'][0]['text']
 
-  def getText(item) :
+  def get_text(item) :
     if item :
       return item.text
     else:
       return ''
 
-  def getHref(item) :
+  def get_href(item) :
     if item :
       return item.get('href')
     else:
       return ''
 
-  def getSrc(item) :
+  def get_src(item) :
     if item :
       return item.get('src')
     else:
       return ''
 
-  def getTime(item) :
+  def get_time(item) :
     if item :
       return item.get('datetime')
     else:
@@ -66,23 +98,26 @@ def get_posts() :
     soup = BeautifulSoup(res.text, "html.parser")
     doms = soup.select('.c-entry-box--compact__image-wrapper')
     links = [dom.get('href') for dom in doms]
-    links.reverse()
     for link in links :
       time.sleep(3.0)
+
+      if(link in storage_url_list) :
+        break
+
       res = requests.get(link)
       soup = BeautifulSoup(res.text, "html.parser")
       head_info = soup.find('head')
-      en_title = getText(soup.select_one('.c-page-title'))
+      en_title = get_text(soup.select_one('.c-page-title'))
       ja_title = translate(en_title)
       meta_description = head_info.find('meta', {'name' : 'description'})
       en_sub_title = meta_description['content']
       ja_sub_title = translate(en_sub_title)
-      created_by = getText(soup.select_one('.c-byline__author-name'))
-      created_by_address = getHref(soup.select_one('.c-byline__twitter-handle'))
+      created_by = get_text(soup.select_one('.c-byline__author-name'))
+      created_by_address = get_href(soup.select_one('.c-byline__twitter-handle'))
       og_image = head_info.find('meta', {'property' : 'og:image'})
       image_url = og_image['content']
-      video_url = getSrc(soup.select_one('.c-video-embed--media iframe'))
-      post_time = getTime(soup.select_one('time'))
+      video_url = get_src(soup.select_one('.c-video-embed--media iframe'))
+      post_time = get_time(soup.select_one('time'))
       en_content = soup.select_one('.c-entry-content')
 
       # 以下HTMLを整形
@@ -117,7 +152,10 @@ def get_posts() :
       
       list.append([en_title, ja_title, en_sub_title, ja_sub_title, en_content, ja_content, image_url, video_url, created_by, created_by_address, link, post_time])
       print([en_title, ja_title, en_sub_title, ja_sub_title, en_content, ja_content, image_url, video_url, created_by, created_by_address, link, post_time])
-    print(str(pageNumber) + "ページ目終了")
+    else :
+      continue
+    break
+  list.reverse()
   return list
 
 def insert_db(array) :
@@ -154,4 +192,3 @@ def insert_db(array) :
 if __name__ == '__main__':
   array = get_posts()
   insert_db(array)
-  print('完了')

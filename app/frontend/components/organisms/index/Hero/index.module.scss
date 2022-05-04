@@ -24,7 +24,8 @@
     width: 100vw;
     padding: 0 100px;
     color: $white;
-    font-size: 54px;
+    font-size: 40px;
+    line-height: 1.4;
     font-weight: bold;
 
     @include screenMd {
