@@ -21,7 +21,7 @@ const Private = ({ data }) => {
   const robots = "noindex, nofollow";
   const path = "/posts/private/";
   return (
-    <Layout title={title} canonical={canonical}>
+    <Layout title={title} canonical={canonical} robots={robots}>
       <BreadcrumbsJsonLd breadcrumbs={breadcrumbs} />
       <div className={style.content}>
         <Breadcrumbs data={breadcrumbs} />

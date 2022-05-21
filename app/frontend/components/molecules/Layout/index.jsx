@@ -9,6 +9,7 @@ const Layout = ({
   description = "日本語では読むことのできない本場のUFC情報をお届けします。日本人選手や有名スター選手の情報だけでなく、全ての情報を取り入れたい格闘技マニアのためのサイトです。",
   canonical,
   ogp = "https://mma.jp-portal.com/images/og-image.png",
+  robots = "index",
 }) => {
   return (
     <>
@@ -36,7 +37,7 @@ const Layout = ({
           href="/images/apple-touch-icon.png"
         ></link>
         <link rel="canonical" href={canonical} />
-        <meta name="robots" content="noindex, nofollow" />
+        <meta name="robots" content={robots} />
       </Head>
       <OrganizationJsonLd />
       <Header />
