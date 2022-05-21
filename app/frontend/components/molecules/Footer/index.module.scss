@@ -13,8 +13,10 @@
   width: $content-max-width;
   margin: 0 auto;
   padding: 67px 0;
+  display: flex;
 
   @include screenMd {
+    display: block;
     width: 100%;
     padding: convertWithToVw(50) 0;
   }
@@ -29,6 +31,34 @@
     margin: 0 auto;
     width: convertWithToVw(96);
     height: convertWithToVw(90);
+  }
+}
+
+.links {
+  margin-left: 100px;
+
+  @include screenMd {
+    margin: convertWithToVw(30) 0 0;
+  }
+
+  .link {
+    display: block;
+    font-size: 18px;
+    color: $black;
+
+    @include screenMd {
+      text-align: center;
+      font-size: convertWithToVw(16);
+      color: $white;
+    }
+
+    &:nth-child(n + 2) {
+      margin-top: 20px;
+
+      @include screenMd {
+        margin-top: convertWithToVw(10);
+      }
+    }
   }
 }
 

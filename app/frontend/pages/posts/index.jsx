@@ -4,6 +4,7 @@ import Layout from "~/components/molecules/Layout";
 import Breadcrumbs from "~/components/molecules/Breadcrumbs";
 import Ranking from "~/components/atoms/Ranking";
 import Tags from "~/components/atoms/Tags";
+import Banner from "~/components/atoms/Banner";
 import Articles from "~/components/organisms/posts/archive/Articles";
 import BreadcrumbsJsonLd from "~/components/JsonLd/Breadcrumbs";
 import style from "~/pages/posts/index.module.scss";
@@ -37,6 +38,10 @@ const Posts = ({ data }) => {
               name={"人気UFCファイター"}
               data={data.fighters}
               slug={"fighter"}
+            />
+            <Banner
+              url={"/news/translaters/"}
+              src={"translaters-banner-small1.png"}
             />
           </div>
         </div>

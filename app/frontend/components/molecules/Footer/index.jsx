@@ -17,6 +17,14 @@ const Footer = () => {
               />
             </a>
           </Link>
+          <div className={style.links}>
+            <Link href={"/privacy/"}>
+              <a className={style.link}>プライバシーポリシー</a>
+            </Link>
+            <Link href={"/terms/"}>
+              <a className={style.link}>利用規約</a>
+            </Link>
+          </div>
         </div>
       </div>
       <div className={style.bottom}>

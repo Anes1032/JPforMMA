@@ -1,0 +1,77 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+
+.content {
+  margin: 30px 50px 200px;
+  box-shadow: 5px 10px 10px 0 $shadow;
+  background-color: $white;
+  padding: 30px 30px 50px;
+  color: $black;
+
+  @include screenMd {
+    margin: convertWithToVw(30) convertWithToVw(16) convertWithToVw(100);
+  }
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.title {
+  margin-top: 20px;
+  font-size: 40px;
+  color: $red;
+  font-weight: bold;
+  text-align: center;
+
+  @include screenMd {
+    margin-top: convertWithToVw(20);
+    font-size: convertWithToVw(24);
+  }
+}
+
+.main {
+  margin-top: 30px;
+
+  @include screenMd {
+    margin-top: convertWithToVw(30);
+  }
+
+  h2 {
+    color: $red;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+
+    @include screenMd {
+      font-size: convertWithToVw(20);
+      margin: convertWithToVw(20) 0;
+    }
+  }
+
+  p {
+    line-height: 1.5;
+    font-size: 18px;
+
+    @include screenMd {
+      font-size: convertWithToVw(16);
+    }
+  }
+
+  .link {
+    margin: 30px auto 0;
+    display: block;
+    width: 300px;
+    max-width: 100%;
+    background-color: $red;
+    color: $white;
+    text-align: center;
+    font-size: 20px;
+    line-height: 50px;
+    border-radius: 10px;
+
+    @include screenMd {
+    }
+  }
+}

@@ -6,6 +6,7 @@ import Article from "~/components/organisms/posts/detail/Article";
 import BackLinks from "~/components/organisms/posts/detail/BackLinks";
 import Ranking from "~/components/atoms/Ranking";
 import Tags from "~/components/atoms/Tags";
+import Banner from "~/components/atoms/Banner";
 import ArticleJsonLd from "~/components/JsonLd/Article";
 import BreadcrumbsJsonLd from "~/components/JsonLd/Breadcrumbs";
 import style from "~/pages/posts/[id]/index.module.scss";
@@ -42,6 +43,10 @@ const Post = ({ data }) => {
             <Ranking data={data.rankings} />
             <BackLinks />
             <Tags name={"関連するキーワード"} data={data.tags} slug={"tag"} />
+            <Banner
+              url={"/news/translaters/"}
+              src={"translaters-banner-small2.png"}
+            />
           </div>
         </div>
       </div>
