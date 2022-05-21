@@ -2,6 +2,7 @@ import Api from "~/lib/api";
 import { buildCanonical } from "~/lib/util";
 import Layout from "~/components/molecules/Layout";
 import Hero from "~/components/organisms/index/Hero";
+import Banner from "~/components/organisms/index/Banner";
 import New from "~/components/organisms/index/New";
 import Ranking from "~/components/atoms/Ranking";
 import Pickup from "~/components/organisms/index/Pickup";
@@ -16,6 +17,7 @@ const Index = ({ data }) => {
   return (
     <Layout title={title} canonical={canonical}>
       <Hero data={data.hero} />
+      <Banner />
       <div className={style.content}>
         <div className={style.box}>
           <New data={data.news} />

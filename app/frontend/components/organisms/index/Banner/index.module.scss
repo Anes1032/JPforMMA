@@ -1,0 +1,33 @@
+@import "~/styles/settings.scss";
+@import "~/styles/utils.scss";
+
+.container {
+  background-color: $red;
+  padding: 0 20px;
+  margin-bottom: 50px;
+
+  @include screenMd {
+    padding: 0 convertWithToVw(16);
+    margin-bottom: convertWithToVw(20);
+  }
+}
+
+.link {
+  max-width: 1000px;
+  display: block;
+  margin: 0 auto;
+  transform: translateY(50px);
+  box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+
+  @include screenMd {
+    transform: translateY(convertWithToVw(20));
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.image {
+  width: 100%;
+}

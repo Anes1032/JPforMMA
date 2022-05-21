@@ -108,10 +108,10 @@ def get_posts() :
       soup = BeautifulSoup(res.text, "html.parser")
       head_info = soup.find('head')
       en_title = get_text(soup.select_one('.c-page-title'))
-      ja_title = translate(en_title)
+      # ja_title = translate(en_title)
       meta_description = head_info.find('meta', {'name' : 'description'})
       en_sub_title = meta_description['content']
-      ja_sub_title = translate(en_sub_title)
+      # ja_sub_title = translate(en_sub_title)
       created_by = get_text(soup.select_one('.c-byline__author-name'))
       created_by_address = get_href(soup.select_one('.c-byline__twitter-handle'))
       og_image = head_info.find('meta', {'property' : 'og:image'})
@@ -142,16 +142,16 @@ def get_posts() :
           e.attrs.clear()
 
       # 文字数制限に引っかかるのでpとhに分割して翻訳
-      ja_content = ''.join([translate(text=str(el).replace('\n', '')) for el in en_content.find_all(['p', 'h3'])])
+      # ja_content = ''.join([translate(text=str(el).replace('\n', '')) for el in en_content.find_all(['p', 'h3'])])
 
       # 上記によってahrefとなってしまったのでa hrefに戻す
-      ja_content = ja_content.replace('ahref', 'a href').replace('Ahref', 'a href')
+      # ja_content = ja_content.replace('ahref', 'a href').replace('Ahref', 'a href')
 
       # 改行の削除/wrapしてるdiv要素の削除
       en_content = ''.join([str(el).replace('\n', '') for el in en_content.find_all(['p', 'h3'])])
       
-      list.append([en_title, ja_title, en_sub_title, ja_sub_title, en_content, ja_content, image_url, video_url, created_by, created_by_address, link, post_time])
-      print([en_title, ja_title, en_sub_title, ja_sub_title, en_content, ja_content, image_url, video_url, created_by, created_by_address, link, post_time])
+      list.append([en_title, en_sub_title, en_content, image_url, video_url, created_by, created_by_address, link, post_time])
+      print([en_title, en_sub_title, en_content, image_url, video_url, created_by, created_by_address, link, post_time])
     else :
       continue
     break
@@ -175,13 +175,13 @@ def insert_db(array) :
   # SQL文を実行
   sql = ('''
   INSERT INTO posts 
-    (en_title, ja_title, en_sub_title, ja_sub_title, en_content, ja_content, image_url, video_url, created_by, created_by_address, reference_url, post_time) 
+    (en_title, en_sub_title, en_content, image_url, video_url, created_by, created_by_address, reference_url, post_time) 
   VALUES 
-    (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    (%s, %s, %s, %s, %s, %s, %s, %s, %s)
   ''')
 
   for el in array :
-    cur.execute(sql , (el[0], el[1], el[2], el[3], el[4], el[5], el[6], el[7], el[8], el[9], el[10],el[11]))
+    cur.execute(sql , (el[0], el[1], el[2], el[3], el[4], el[5], el[6], el[7], el[8]))
 
   conn.commit()
   
